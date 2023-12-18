@@ -1,3 +1,3 @@
-cat ./main.c > ./mips/soft/main.c
+cat ./main.c > ./mips/soft/test.c
 
-echo "update ./mips/soft/main.c from ./main.c"
+echo "update ./mips/soft/test.c from ./main.c"
