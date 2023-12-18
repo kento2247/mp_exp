@@ -21,7 +21,7 @@ mips/hard/*.cache
 mips/hard/*.hw
 mips/hard/*.ip_user_files
 mips/hard/*.xpr
-mips/hard/.Xil/*
+mips/hard/.Xil
 
 # ./sim/
 mips/sim/a.out
