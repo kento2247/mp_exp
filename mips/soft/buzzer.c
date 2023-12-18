@@ -1,26 +1,23 @@
-/* Do not remove the following line. Do not remove interrupt_handler(). */
 #include "crt0.c"
 
-void interrupt_handler() {}
-
-void lcd_wait(int n)
-{
-	int i;
-	for (i = 0; i < n; i++)
-		;
+void wait(int n) {
+  // 3000 ~= 1msec
+  int i;
+  for (i = 0; i < n; i++)
+    ;
 }
 
-void main()
-{
-	// volatile int* sw_ptr = (int*)0xff04;
-	// volatile int* led_ptr = (int*)0xff08;
+void tone_play_time(int id, int wait_time) {
+  if (id < 0 || id > 13) return;
+  volatile int* iob_ptr = (int*)0xff10;
+  *iob_ptr = id;
+  wait(wait_time);
+  *iob_ptr = 0;
+}
 
-	int i = 0;
-	volatile int* iob_ptr = (int*)0xff10;
-	for (i = 1; i < 14; i++) {
-		*iob_ptr = i;
-		lcd_wait(3500000);
-		*iob_ptr = 0;
-		lcd_wait(3500000);
-	}
+void tone_play(int id) {
+  if (id < 0 || id > 13) return;
+  volatile int* iob_ptr = (int*)0xff10;
+  *iob_ptr = id;
+  *iob_ptr = 0;
 }
