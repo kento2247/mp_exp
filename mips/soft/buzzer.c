@@ -1,6 +1,5 @@
 /* Do not remove the following line. Do not remove interrupt_handler(). */
 #include "crt0.c"
-#include <stdio.h>
 
 void interrupt_handler() {}
 
