@@ -19,7 +19,6 @@ void main()
 	int i = 0;
 	volatile int* iob_ptr = (int*)0xff10;
 	for (i = 1; i < 14; i++) {
-		printf("%d\n", i);
 		*iob_ptr = i;
 		lcd_wait(3500000);
 		*iob_ptr = 0;
