@@ -16,22 +16,6 @@ void animate() {
 
   lcd_init();
   lcd_update(data);
-
-  //   for (i = 0; i < DISPLAY_COL + 1; i++) {
-  //     for (j = 0; j < DISPLAY_ROW; j++) {
-  //       lcd_cmd(0x80 + j * 0x40 + i);
-  //       lcd_cmd(data[j][i]);
-  //     }
-  //     lcd_wait(1000000);
-  //   }
-
-  //   for (i = 1; i < DISPLAY_ROW; i++) {
-  //     for (j = 0; j < DISPLAY_COL + 1; j++) {
-  //       data[i - 1][j] = data[i][j];
-  //     }
-  //   }
-
-  //   data[DISPLAY_ROW - 1][DISPLAY_COL] = ' ';
 }
 
 // 以下は仮の実装です。実際の環境に合わせて LCD 制御関数を実装してください。
@@ -45,8 +29,19 @@ void lcd_wait(int n) {
 void lcd_str(unsigned char *str) {
   int i = 0;
   for (i = 0; i < DISPLAY_COL; i++) {
-    lcd_data(*str++);
+    lcd_char(*str++);
   }
+}
+
+void lcd_char(unsigned char data) {
+  /* E, RS, RW, DB[7:0] */
+  volatile int *lcd_ptr = (int *)0xff0c;
+  *lcd_ptr = (0x000000ff & data) | 0x00000200; /* E=0,RS=1,RW=0 */
+  lcd_wait(1);
+  *lcd_ptr = (0x000000ff & data) | 0x00000600; /* E=1,RS=1,RW=0 */
+  lcd_wait(2);
+  *lcd_ptr = (0x000000ff & data) | 0x00000200; /* E=0,RS=1,RW=0 */
+  lcd_wait(278);
 }
 
 void lcd_cmd(unsigned char cmd) {
