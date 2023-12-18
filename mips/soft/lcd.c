@@ -17,14 +17,9 @@ void lcd_demo_animation() {
   unsigned char data[DISPLAY_ROW][DISPLAY_COL] = {
       " Hello, World.      ", " Hello, World.      ", " Hello, World.      ",
       " Hello, World.      "};
-  int i, j;
-  for (i = 0; i < DISPLAY_ROW; i++) {
-    for (j = 0; j < DISPLAY_COL; j++) {
-      lcd_update(data);
-      data[i][j] = ' ';
-    }
-    lcd_wait(3000 * 1000);
-  }
+
+  lcd_init();
+  lcd_update(data);
 }
 
 void lcd_wait(int n) {
