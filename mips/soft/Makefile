@@ -46,4 +46,4 @@ all:
 	@cat program.dat | awk '{print $0} END{for(i=0;i<16384-NR;i++){printf("00000000\n");}}' > program.tmp
 	@mv program.tmp program.dat
 clean:
-	rm -f *.o *.dump *.asm *.bin *.dat
+    -rm -f *.o *.dump *.asm *.bin *.dat

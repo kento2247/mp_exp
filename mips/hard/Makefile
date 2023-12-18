@@ -5,5 +5,5 @@ all:
 program:
 	vivado -mode batch -source script/program.tcl
 clean:
-	rm -f *.jou *.log *.bit *.html *.xml
-	rm -rf *.srcs *.cache *.hw *.ip_user_files *.xpr .Xil
+	-rm -f *.jou *.log *.bit *.html *.xml
+	-rm -rf *.srcs *.cache *.hw *.ip_user_files *.xpr .Xil

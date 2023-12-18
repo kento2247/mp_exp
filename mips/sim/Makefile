@@ -5,4 +5,4 @@ all:
 wave:
 	gtkwave dump.vcd &
 clean:
-	rm -f a.out dump.vcd
+	-rm -f a.out dump.vcd

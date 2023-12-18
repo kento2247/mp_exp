@@ -1,4 +1,4 @@
-cd ./soft
+cd ./mips/soft
 make clean
 make
 cd ../hard
