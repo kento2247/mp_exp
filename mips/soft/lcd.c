@@ -27,6 +27,13 @@ void lcd_demo_animation() {
   }
 }
 
+unsigned char **lcd_void_data() {
+  unsigned char data[DISPLAY_ROW][DISPLAY_COL] = {
+      "                    ", "                    ", "                    ",
+      "                    "};
+  return data;
+}
+
 void lcd_wait(int n) {
   int i;
   for (i = 0; i < n; i++)
