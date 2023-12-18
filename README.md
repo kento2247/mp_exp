@@ -1,14 +1,14 @@
 # How to build
 
 
-~~1. `cd ./soft`~~
-~~2. `make clean`~~
-~~3. `make`~~
-~~4. `cd ../hard`~~
-~~5. `make clean`~~
-~~6. `make`~~
-~~7. `make program`~~
-   `./write.sh`で書き込めます
+~~1. `cd ./soft`~~  
+~~2. `make clean`~~  
+~~3. `make`~~  
+~~4. `cd ../hard`~~  
+~~5. `make clean`~~  
+~~6. `make`~~  
+~~7. `make program`~~  
+   `./write.sh`で書き込めます  
    > 書き込み完了
 
 # How to edit
