@@ -6,6 +6,8 @@ void lcd_wait(int n);
 void lcd_cmd(unsigned char cmd);
 void lcd_init();
 void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL]);
+void lcd_char(unsigned char data);
+void lcd_str(unsigned char *str);
 
 // LCD アニメーション関数
 void animate() {
