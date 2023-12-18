@@ -59,9 +59,13 @@ void main()
     else if (state == OPENING)
     {
       start_display();
-      while (~btn_check_my()) // ボタンが押されるのを待つ(未完成）
+      while (!ioc_check_0()) // ボタンが押されるのを待つ(未完成）
       {
+        ;
       }
+      lcd_cmd(0x01); // clear display
+      lcd_cmd(0x80);
+      lcd_str("OK");
       state = PLAY;
     }
     else if (state == PLAY)
@@ -96,10 +100,6 @@ void end_display()
   lcd_str("Press Button");
 }
 
-int btn_check_my() // 何らかのボタンが押されたかどうか(未完成）
-{
-}
-
 void play()
 {
   while (1)
@@ -124,11 +124,14 @@ void show_ball(int pos)
 {
   lcd_cmd(0x01);       /* Clear display */
   lcd_cmd(0x80 + pos); /* Set cursor position */
-  lcd_data('hello world');
+  lcd_data('a');
 }
 /*
  * Switch functions
  */
+int btn_check_my() // 何らかのボタンが押されたかどうか(未完成）
+{
+}
 int btn_check_0()
 {
   volatile int *sw_ptr = (int *)0xff04;
@@ -147,6 +150,14 @@ int btn_check_3()
   ;
   return (*sw_ptr & 0x80) ? 1 : 0;
 }
+
+int ioc_check_0()
+{
+  volatile int *sw_ptr = (int *)0xff14;
+  ;
+  return (*sw_ptr & 0x1) ? 1 : 0;
+}
+
 /*
  * LED functions
  */
