@@ -61,9 +61,11 @@
 - 必須条件 2: 大域変数を使用した値共有の仕様
 
 > ## flow chart
-![flowChart](https://github.com/kento2247/mp_exp/assets/42343541/de40fb11-6ef6-4150-869f-655e7db88568)
+>
+> ![flowChart](https://github.com/kento2247/mp_exp/assets/42343541/de40fb11-6ef6-4150-869f-655e7db88568)
 
 > ## program
+
 1. LCD 描画の class を作成
    > - [ ] LCD の初期化（init）
    > - [ ] LCD に描画するフォント・ビットマップ画像の読み込み（load）
@@ -89,7 +91,7 @@
 4. ハンドラー
    > - [ ] 割り込みハンドラーでボタン入力だけ受理
 5. 大域変数
-   > 使用なし
+   > - [ ] ハンドラーで受理したボタン入力を、大域変数に格納
 6. main
    > - [ ] LCD 描画の class のインスタンスを作成
    > - [ ] LCD 描画の class を使用して、LCD に描画する情報を更新する class のインスタンスを作成
