@@ -12,6 +12,7 @@ void lcd_wait(int n);
 void lcd_cmd(unsigned char cmd);
 void lcd_data(unsigned char data);
 void lcd_init();
+int cnt;
 
 #define INIT 0
 #define OPENING 1
@@ -23,7 +24,6 @@ int state = INIT, pos = 0;
 /* interrupt_handler() is called every 100msec */
 void interrupt_handler()
 {
-  static int cnt;
   if (state == INIT)
   {
   }
@@ -53,23 +53,16 @@ void main()
   {
     if (state == INIT)
     {
-      lcd_init();
-      state = OPENING;
-    }
-    else if (state == OPENING)
-    {
       start_display();
       while (!ioc_check_0()) // ボタンが押されるのを待つ(未完成）
       {
         ;
       }
-      lcd_cmd(0x01); // clear display
-      lcd_cmd(0x80);
-      lcd_str("OK");
       state = PLAY;
     }
     else if (state == PLAY)
     {
+      cnt = 0;
       play();
       state = ENDING;
     }
@@ -105,6 +98,33 @@ void play()
   while (1)
   {
     /* Button0 is pushed when the ball is in the left edge */
+
+    if (cnt == 28 && ioc_check_0())
+    {
+      cnt = 3;
+    }
+    else if (cnt == 29 && ioc_check_0())
+    {
+      cnt = 2;
+    }
+    else if (cnt == 30 && ioc_check_0())
+    {
+      cnt = 1;
+    }
+
+    else if (cnt == 12 && ioc_check_0())
+    {
+      cnt = 19;
+    }
+    else if (cnt == 13 && ioc_check_0())
+    {
+      cnt = 18;
+    }
+    else if (cnt == 14 && ioc_check_0())
+    {
+      cnt = 17;
+    }
+
     if (pos == 0 && btn_check_0())
     {
       led_blink(); /* Blink LEDs when hit */
