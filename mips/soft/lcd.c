@@ -1,9 +1,45 @@
-/*
- * LCD functions
- */
-
 #define DISPLAY_ROW 4
 #define DISPLAY_COL 20
+
+// LCD 制御関数のプロトタイプ宣言
+void lcd_wait(int n);
+void lcd_cmd(unsigned char cmd);
+void lcd_init();
+void lcd_update(unsigned char *data);
+
+// LCD アニメーション関数
+void animate() {
+  int i, j;
+  unsigned char data[DISPLAY_ROW][DISPLAY_COL + 1] = {
+      " Hello, World! ", "                ", "                ",
+      "                "};
+
+  lcd_init();
+
+  for (i = 0; i < DISPLAY_COL + 1; i++) {
+    for (j = 0; j < DISPLAY_ROW; j++) {
+      lcd_cmd(0x80 + j * 0x40 + i);
+      lcd_cmd(data[j][i]);
+    }
+    lcd_wait(1000000);
+  }
+
+  for (i = 1; i < DISPLAY_ROW; i++) {
+    for (j = 0; j < DISPLAY_COL + 1; j++) {
+      data[i - 1][j] = data[i][j];
+    }
+  }
+
+  data[DISPLAY_ROW - 1][DISPLAY_COL] = ' ';
+}
+
+int main() {
+  animate();
+
+  return 0;
+}
+
+// 以下は仮の実装です。実際の環境に合わせて LCD 制御関数を実装してください。
 
 void lcd_wait(int n) {
   int i;
@@ -32,27 +68,9 @@ void lcd_init() {
 }
 
 void lcd_update(unsigned char *data) {
-  int i, j;
-  lcd_init();
+  int i;
   for (i = 0; i < DISPLAY_ROW; i++) {
     lcd_cmd(0x80 + i * 0x40);
-    for (j = 0; j < DISPLAY_COL; j++) {
-      lcd_data(data[i * DISPLAY_COL + j]);
-    }
+    lcd_cmd(data[i]);
   }
 }
-
-void demo() {
-  unsigned char data[DISPLAY_ROW][DISPLAY_COL] = {
-      "Hello World!", "Hello World!", "Hello World!", "Hello World!"};
-  lcd_update(&data);
-}
-
-/*
-#include "lcd.c"
-
-#include "crt0.c"
-
-void interrupt_handler() {}
-int main() { demo(); }
-*/
