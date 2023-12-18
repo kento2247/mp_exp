@@ -28,4 +28,4 @@ mips/sim/a.out
 mips/sim/dump.vcd
 
 # ./debug.*
-debug.*
+debug.c
