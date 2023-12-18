@@ -27,13 +27,6 @@ void lcd_demo_animation() {
   }
 }
 
-unsigned char **lcd_void_data() {
-  unsigned char data[DISPLAY_ROW][DISPLAY_COL] = {
-      "                    ", "                    ", "                    ",
-      "                    "};
-  return data;
-}
-
 void lcd_wait(int n) {
   int i;
   for (i = 0; i < n; i++)
@@ -93,3 +86,33 @@ void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL]) {
     lcd_str(data[i]);
   }
 }
+
+/*
+#include "crt0.c"
+
+// 必ずcrt0.cの後にincludeする
+#include "button.c"
+#include "lcd.c"
+#include "tone.c"
+
+void interrupt_handler() {}
+
+int main() {
+  lcd_init();
+  unsigned char lcd_data[DISPLAY_ROW][DISPLAY_COL] = {
+      " Hello, World.      ", " Hello, World.      ", " Hello, World.      ",
+      " Hello, World.      "};
+  while (1) {
+    int i = 0;
+    for (i = 0; i < 4; i++) {
+      if (btn_check_num(i)) {
+        lcd_data[i][0] = 'a';
+      } else {
+        lcd_data[i][0] = 'b';
+      }
+    }
+    lcd_update(lcd_data);
+    lcd_wait(3000 * 1000);
+  }
+}
+*/
