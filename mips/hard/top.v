@@ -21,7 +21,7 @@ module fpga_top (
 	
 );
 
-wire	[31:0]	pc, instr, readdata, readdata0, readdata1, readdata5, writedata, dataadr;
+wire	[31:0]	pc, instr, readdata, readdata0, readdata1, readdata5, readdata6, writedata, dataadr;
 wire	[3:0]	byteen;
 wire		reset;
 wire		memwrite, memtoregM, swc, cs0, cs1, cs2, cs3, cs4, cs5, irq;
@@ -48,11 +48,11 @@ assign	cs0	= dataadr <  32'hff00;
 assign	cs1	= dataadr == 32'hff04;
 assign	cs2	= dataadr == 32'hff08;
 assign	cs3	= dataadr == 32'hff0c;
-assign  cs4 = dataadr == 32'hff10;
-assign  cs5 = dataadr == 32'hff14;
+assign  cs4 = dataadr == 32'hff10; // iob
+assign  cs5 = dataadr == 32'hff14; // ioc
+assign  cs6 = dataadr == 32'hff18; // ioa
 
-
-assign	readdata	= cs0 ? readdata0 : cs1 ? readdata1 : cs5 ? readdata5 : 0;
+assign	readdata	= cs0 ? readdata0 : cs1 ? readdata1 : cs5 ? readdata5 : cs6 ? readdata6 :  0;
 
 /* Memory module (@125MHz) */
 mem mem (clk_125mhz, reset, cs0 & memwrite, pc[15:2], dataadr[15:2], instr, 
@@ -64,6 +64,7 @@ timer timer (clk_62p5mhz, reset, irq);
 /* cs1 */
 assign	readdata1	= {24'h0, btn, sw};
 assign	readdata5	= {28'h0, ioc};
+assign	readdata6	= {28'h0, ioa};
 /* cs2 */
 always @ (posedge clk_62p5mhz or posedge reset)
 	if (reset)			led	<= 0;

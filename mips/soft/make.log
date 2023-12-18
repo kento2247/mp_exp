@@ -1,0 +1,19 @@
+export LD_LIBRARY_PATH=/usr/mips-linux-gnu/lib/;\
+/home/md401/aa205875/usr/bin//mips-gcc -O0 -march=r2000 -msoft-float -fno-stack-protector -mno-abicalls -fno-pic -G 0 -mno-gpopt -c -S test.c -o program.asm
+/home/md401/aa205875/usr/bin//mips-as -mno-pdr program.asm -o program.o
+# Extract data section to _data.o
+/home/md401/aa205875/usr/bin//mips-objcopy -O binary --only-section=.data program.o _data.o
+# Add the data section (_data.o) as backup section
+/home/md401/aa205875/usr/bin//mips-objcopy --add-section .backup=_data.o program.o program_edit.o
+# Link
+/home/md401/aa205875/usr/bin//mips-ld -T mips.ld program_edit.o -o program.bin 
+# Extract the linked data section to _data_linked.o
+/home/md401/aa205875/usr/bin//mips-objcopy -O binary --only-section=.data program.bin _data_linked.o
+# Remote old backup section
+/home/md401/aa205875/usr/bin//mips-objcopy --remove-section .backup program.bin program_bin_removed.o
+# Add the linked data section (_data_linked.o) as backup section
+/home/md401/aa205875/usr/bin//mips-objcopy --add-section .backup=_data_linked.o program_bin_removed.o program.bin
+# Disassemble
+/home/md401/aa205875/usr/bin//mips-objdump -D --disassemble-zeroes program.bin > program.dump
+*** Generating program.dat from program.dump ***
+*** Your program includes 763 words (default RAM size is 16384 words) ***
