@@ -39,3 +39,7 @@
 
 - [ ] 音
 - [ ] I/O port 管理（top.v を編集）
+
+# External design
+- 
+# Internal design
