@@ -41,5 +41,7 @@
 - [ ] I/O port 管理（top.v を編集）
 
 # External design
+- プレイ人数: 2人
 - 
 # Internal design
+- 

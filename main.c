@@ -1,7 +1,6 @@
 /* Do not remove the following line. Do not remove interrupt_handler(). */
 #include "crt0.c"
 
-// 関数のプロトタイプ宣言
 void show_ball(int pos);
 void play();
 int btn_check_0();
@@ -14,13 +13,11 @@ void lcd_cmd(unsigned char cmd);
 void lcd_data(unsigned char data);
 void lcd_init();
 
-// 状態を表す定数
 #define INIT 0
 #define OPENING 1
 #define PLAY 2
 #define ENDING 3
 
-// 状態変数
 int state = INIT, pos = 0;
 
 /* interrupt_handler() is called every 100msec */
@@ -39,7 +36,6 @@ void interrupt_handler() {
   } else if (state == ENDING) {
   }
 }
-
 void main() {
   while (1) {
     if (state == INIT) {
@@ -55,7 +51,6 @@ void main() {
     }
   }
 }
-
 void play() {
   while (1) {
     /* Button0 is pushed when the ball is in the left edge */
@@ -69,13 +64,11 @@ void play() {
     }
   }
 }
-
 void show_ball(int pos) {
   lcd_cmd(0x01);       /* Clear display */
   lcd_cmd(0x80 + pos); /* Set cursor position */
   lcd_data('hello world');
 }
-
 /*
  * Switch functions
  */
@@ -94,7 +87,6 @@ int btn_check_3() {
   ;
   return (*sw_ptr & 0x80) ? 1 : 0;
 }
-
 /*
  * LED functions
  */

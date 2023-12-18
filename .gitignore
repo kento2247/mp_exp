@@ -8,6 +8,7 @@ mips/soft/*.asm
 mips/soft/*.bin 
 mips/soft/*.dat
 mips/soft/*.dat
+mips/soft/test.c
 
 # ./hard/
 mips/hard/*.jou
