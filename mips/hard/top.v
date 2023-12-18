@@ -17,12 +17,19 @@ module fpga_top (
 	output	reg	[7:0]	ioa,
 	output	reg	[7:0]	iob,
 	output	reg	[7:0]	ioc
+
+	
 );
+
 wire	[31:0]	pc, instr, readdata, readdata0, readdata1, writedata, dataadr;
 wire	[3:0]	byteen;
 wire		reset;
 wire		memwrite, memtoregM, swc, cs0, cs1, cs2, cs3, cs4, cs5, irq;
 reg		clk_62p5mhz;
+
+reg [7:0] mode;
+wire buzz;
+beep beep (clk_62p5mhz, reset, mode, buzz);
 
 /* Reset when two buttons are pushed */
 assign	reset	= btn[0] & btn[1];
@@ -41,6 +48,7 @@ assign	cs0	= dataadr <  32'hff00;
 assign	cs1	= dataadr == 32'hff04;
 assign	cs2	= dataadr == 32'hff08;
 assign	cs3	= dataadr == 32'hff0c;
+assign  cs4 = dataadr == 32'hff10;
 
 assign	readdata	= cs0 ? readdata0 : cs1 ? readdata1 : 0;
 
@@ -61,6 +69,14 @@ always @ (posedge clk_62p5mhz or posedge reset)
 always @ (posedge clk_62p5mhz or posedge reset)
 	if (reset)			lcd	<= 0;
 	else if (cs3 && memwrite)	lcd	<= writedata[10:0];
+
+always @ (posedge clk_62p5mhz or posedge reset)       
+	if (reset)                      mode    <= 0;       
+	else if (cs4 && memwrite)       mode    <= writedata[7:0];
+	
+always @ (posedge clk_62p5mhz or posedge reset)        
+	if (reset)                      iob     <= 0;        
+	else                            iob[0]  <= buzz;
 
 endmodule
 
@@ -115,4 +131,42 @@ end
 
 /* Specify your program image file (e.g., program.dat) */
 initial $readmemh("program.dat", RAM, 0, 16383);
+endmodule
+
+module beep
+(
+	input clk_62p5mhz,
+	input reset,
+	input [7:0] mode,
+	output buzz
+);
+
+reg  [31:0] count;
+wire [31:0] interval;
+
+assign interval =  (mode ==  1) ? 14931 * 2: /* C  */ 
+                   (mode ==  2) ? 14093 * 2: /* C# */
+		  		   (mode ==  3) ? 13302 * 2: /* D  */                      
+				   (mode ==  4) ? 12555 * 2: /* D# */      
+				   (mode ==  5) ? 11850 * 2: /* E  */   
+				   (mode ==  6) ? 11185 * 2: /* F  */    
+				   (mode ==  7) ? 10558 * 2: /* F# */   
+				   (mode ==  8) ?  9965 * 2: /* G  */    
+				   (mode ==  9) ?  9406 * 2: /* G# */     
+				   (mode == 10) ?  8878 * 2: /* A  */    
+				   (mode == 11) ?  8380 * 2: /* A# */   
+				   (mode == 12) ?  7909 * 2: /* B  */    
+				   (mode == 13) ?  7465 * 2: /* C  */
+				   0;
+
+assign buzz = (mode > 0) && (count < interval / 2) ? 1 : 0;
+always @ (posedge clk_62p5mhz or posedge reset)
+	if (reset)
+		count <= 0;
+	else if (mode > 0)
+		if (count < interval)
+			count <= count + 1;
+		else 
+			count <= 0;
+
 endmodule
