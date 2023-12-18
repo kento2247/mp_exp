@@ -5,38 +5,33 @@
 void lcd_wait(int n);
 void lcd_cmd(unsigned char cmd);
 void lcd_init();
-void lcd_update(unsigned char *data);
+void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL]);
 
 // LCD アニメーション関数
 void animate() {
   int i, j;
-  unsigned char data[DISPLAY_ROW][DISPLAY_COL + 1] = {
-      " Hello, World! ", "                ", "                ",
-      "                "};
+  unsigned char data[DISPLAY_ROW][DISPLAY_COL] = {
+      " Hello, World!", "               ", "               ",
+      "               "};
 
   lcd_init();
+  lcd_update(data);
 
-  for (i = 0; i < DISPLAY_COL + 1; i++) {
-    for (j = 0; j < DISPLAY_ROW; j++) {
-      lcd_cmd(0x80 + j * 0x40 + i);
-      lcd_cmd(data[j][i]);
-    }
-    lcd_wait(1000000);
-  }
+  //   for (i = 0; i < DISPLAY_COL + 1; i++) {
+  //     for (j = 0; j < DISPLAY_ROW; j++) {
+  //       lcd_cmd(0x80 + j * 0x40 + i);
+  //       lcd_cmd(data[j][i]);
+  //     }
+  //     lcd_wait(1000000);
+  //   }
 
-  for (i = 1; i < DISPLAY_ROW; i++) {
-    for (j = 0; j < DISPLAY_COL + 1; j++) {
-      data[i - 1][j] = data[i][j];
-    }
-  }
+  //   for (i = 1; i < DISPLAY_ROW; i++) {
+  //     for (j = 0; j < DISPLAY_COL + 1; j++) {
+  //       data[i - 1][j] = data[i][j];
+  //     }
+  //   }
 
-  data[DISPLAY_ROW - 1][DISPLAY_COL] = ' ';
-}
-
-int main() {
-  animate();
-
-  return 0;
+  //   data[DISPLAY_ROW - 1][DISPLAY_COL] = ' ';
 }
 
 // 以下は仮の実装です。実際の環境に合わせて LCD 制御関数を実装してください。
@@ -45,6 +40,13 @@ void lcd_wait(int n) {
   int i;
   for (i = 0; i < n; i++)
     ;
+}
+
+void lcd_str(unsigned char *str) {
+  int i = 0;
+  for (i = 0; i < DISPLAY_COL; i++) {
+    lcd_data(*str++);
+  }
 }
 
 void lcd_cmd(unsigned char cmd) {
@@ -67,10 +69,25 @@ void lcd_init() {
   lcd_wait(10417);
 }
 
-void lcd_update(unsigned char *data) {
+void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL]) {
   int i;
+  int pos;  // address
   for (i = 0; i < DISPLAY_ROW; i++) {
-    lcd_cmd(0x80 + i * 0x40);
-    lcd_cmd(data[i]);
+    switch (i) {
+      case 0:
+        pos = 0x80;
+        break;
+      case 1:
+        pos = 0xc0;
+        break;
+      case 2:
+        pos = 0x94;
+        break;
+      case 3:
+        pos = 0xd4;
+        break;
+    }
+    lcd_cmd(pos);
+    lcd_str(data[i]);
   }
 }
