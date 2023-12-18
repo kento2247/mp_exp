@@ -60,6 +60,10 @@
 - 必須条件 1: 割り込みハンドラの処理と main の処理を分ける
 - 必須条件 2: 大域変数を使用した値共有の仕様
 
+> ## flow chart
+![flowChart](https://github.com/kento2247/mp_exp/assets/42343541/de40fb11-6ef6-4150-869f-655e7db88568)
+
+> ## program
 1. LCD 描画の class を作成
    > - [ ] LCD の初期化（init）
    > - [ ] LCD に描画するフォント・ビットマップ画像の読み込み（load）
