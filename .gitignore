@@ -1,0 +1,31 @@
+.DS_Store
+a.out
+
+# ./soft/
+mips/soft/*.o
+mips/soft/*.dump 
+mips/soft/*.asm 
+mips/soft/*.bin 
+mips/soft/*.dat
+mips/soft/*.dat
+mips/soft/main.c
+
+# ./hard/
+mips/hard/*.jou
+mips/hard/*.log
+mips/hard/*.bit
+mips/hard/*.html
+mips/hard/*.xml
+mips/hard/*.srcs
+mips/hard/*.cache
+mips/hard/*.hw
+mips/hard/*.ip_user_files
+mips/hard/*.xpr
+mips/hard/.Xil/*
+
+# ./sim/
+mips/sim/a.out
+mips/sim/dump.vcd
+
+# ./debug.*
+debug.*

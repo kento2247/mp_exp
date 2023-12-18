@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Mon Dec 11 12:10:32 2023
+# Process ID: 41554
+# Current directory: /home/md304/ub465982/mp_exp/mips/soft/project_1/project_1.runs/synth_1
+# Command line: vivado -log fpga_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fpga_top.tcl
+# Log file: /home/md304/ub465982/mp_exp/mips/soft/project_1/project_1.runs/synth_1/fpga_top.vds
+# Journal file: /home/md304/ub465982/mp_exp/mips/soft/project_1/project_1.runs/synth_1/vivado.jou
+# Running On: y14c030.educ.cc.keio.ac.jp, OS: Linux, CPU Frequency: 2100.000 MHz, CPU Physical cores: 16, Host memory: 33126 MB
+#-----------------------------------------------------------
+source fpga_top.tcl -notrace

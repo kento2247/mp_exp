@@ -1,0 +1,754 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Mon Dec 11 12:10:32 2023
+# Process ID: 41554
+# Current directory: /home/md304/ub465982/mp_exp/mips/soft/project_1/project_1.runs/synth_1
+# Command line: vivado -log fpga_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fpga_top.tcl
+# Log file: /home/md304/ub465982/mp_exp/mips/soft/project_1/project_1.runs/synth_1/fpga_top.vds
+# Journal file: /home/md304/ub465982/mp_exp/mips/soft/project_1/project_1.runs/synth_1/vivado.jou
+# Running On: y14c030.educ.cc.keio.ac.jp, OS: Linux, CPU Frequency: 2100.000 MHz, CPU Physical cores: 16, Host memory: 33126 MB
+#-----------------------------------------------------------
+source fpga_top.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental /home/md304/ub465982/mp_exp/mips/soft/project_1/project_1.srcs/utils_1/imports/synth_1/fpga_top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/md304/ub465982/mp_exp/mips/soft/project_1/project_1.srcs/utils_1/imports/synth_1/fpga_top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top fpga_top -part xc7z010clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Vivado_Tcl 4-1810] synth_design options have changed between reference and incremental; A full resynthesis will be run
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 41602
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [/usr/local/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+INFO: [Synth 8-11241] undeclared symbol 'jumpD', assumed default net type 'wire' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:67]
+INFO: [Synth 8-11241] undeclared symbol 'cop0writeW', assumed default net type 'wire' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:69]
+INFO: [Synth 8-11241] undeclared symbol 'halfwordE', assumed default net type 'wire' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:71]
+INFO: [Synth 8-11241] undeclared symbol 'rfeE', assumed default net type 'wire' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:71]
+INFO: [Synth 8-11241] undeclared symbol 'interrupt', assumed default net type 'wire' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:91]
+INFO: [Synth 8-11241] undeclared symbol 'hiloselE', assumed default net type 'wire' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:235]
+INFO: [Synth 8-11241] undeclared symbol 'iec', assumed default net type 'wire' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:796]
+INFO: [Synth 8-11241] undeclared symbol 'cin', assumed default net type 'wire' [/home/md304/ub465982/mp_exp/mips/hard/multdiv.v:85]
+INFO: [Synth 8-11241] undeclared symbol 'cout', assumed default net type 'wire' [/home/md304/ub465982/mp_exp/mips/hard/multdiv.v:97]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2657.688 ; gain = 372.668 ; free physical = 18569 ; free virtual = 32347
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1848.354; parent = 1637.698; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4322.203; parent = 2657.691; children = 1664.512
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'fpga_top' [/home/md304/ub465982/mp_exp/mips/hard/top.v:11]
+INFO: [Synth 8-6157] synthesizing module 'mips' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:21]
+INFO: [Synth 8-6157] synthesizing module 'controller' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:130]
+INFO: [Synth 8-6157] synthesizing module 'maindec' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:247]
+INFO: [Synth 8-6155] done synthesizing module 'maindec' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:247]
+INFO: [Synth 8-6157] synthesizing module 'alushdec' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:300]
+INFO: [Synth 8-6157] synthesizing module 'mux2' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+	Parameter WIDTH bound to: 13 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+INFO: [Synth 8-6155] done synthesizing module 'alushdec' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:300]
+INFO: [Synth 8-6157] synthesizing module 'hilocontrol' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:402]
+INFO: [Synth 8-6157] synthesizing module 'mux2__parameterized0' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+	Parameter WIDTH bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2__parameterized0' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+INFO: [Synth 8-6155] done synthesizing module 'hilocontrol' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:402]
+INFO: [Synth 8-6157] synthesizing module 'branchdec' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:364]
+INFO: [Synth 8-6155] done synthesizing module 'branchdec' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:364]
+INFO: [Synth 8-6157] synthesizing module 'branchcontroller' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:1103]
+INFO: [Synth 8-6155] done synthesizing module 'branchcontroller' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:1103]
+INFO: [Synth 8-6157] synthesizing module 'cop0dec' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:410]
+INFO: [Synth 8-6155] done synthesizing module 'cop0dec' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:410]
+INFO: [Synth 8-6157] synthesizing module 'flopenr' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+	Parameter WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenr' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+INFO: [Synth 8-6157] synthesizing module 'flopenrc' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:71]
+	Parameter WIDTH bound to: 31 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenrc' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:71]
+INFO: [Synth 8-6157] synthesizing module 'flopenrc__parameterized0' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:71]
+	Parameter WIDTH bound to: 7 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenrc__parameterized0' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:71]
+INFO: [Synth 8-6157] synthesizing module 'flopenr__parameterized0' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+	Parameter WIDTH bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenr__parameterized0' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+INFO: [Synth 8-6155] done synthesizing module 'controller' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:130]
+INFO: [Synth 8-6157] synthesizing module 'datapath' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:421]
+INFO: [Synth 8-6157] synthesizing module 'fivebitdp' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:1060]
+INFO: [Synth 8-6157] synthesizing module 'neqzerocmp' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:43]
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'neqzerocmp' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:43]
+INFO: [Synth 8-6157] synthesizing module 'eqcmp' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:31]
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'eqcmp' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:31]
+INFO: [Synth 8-6157] synthesizing module 'mux2__parameterized1' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2__parameterized1' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+INFO: [Synth 8-6157] synthesizing module 'flopenrc__parameterized1' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:71]
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenrc__parameterized1' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:71]
+INFO: [Synth 8-6157] synthesizing module 'flopenr__parameterized1' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenr__parameterized1' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+INFO: [Synth 8-6155] done synthesizing module 'fivebitdp' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:1060]
+INFO: [Synth 8-6157] synthesizing module 'hazard' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:944]
+INFO: [Synth 8-6157] synthesizing module 'flopr' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:101]
+	Parameter WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopr' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:101]
+INFO: [Synth 8-6155] done synthesizing module 'hazard' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:944]
+INFO: [Synth 8-6157] synthesizing module 'fetchstage' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:570]
+INFO: [Synth 8-6157] synthesizing module 'mux4' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:124]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux4' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:124]
+INFO: [Synth 8-6157] synthesizing module 'flopenr__parameterized2' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenr__parameterized2' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+INFO: [Synth 8-6157] synthesizing module 'adder' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:17]
+INFO: [Synth 8-6155] done synthesizing module 'adder' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:17]
+INFO: [Synth 8-6155] done synthesizing module 'fetchstage' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:570]
+INFO: [Synth 8-6157] synthesizing module 'flopenrc__parameterized2' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:71]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenrc__parameterized2' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:71]
+INFO: [Synth 8-6157] synthesizing module 'flopenrc__parameterized3' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:71]
+	Parameter WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenrc__parameterized3' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:71]
+INFO: [Synth 8-6157] synthesizing module 'decodestage' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:605]
+INFO: [Synth 8-6157] synthesizing module 'regfile' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:1213]
+INFO: [Synth 8-6155] done synthesizing module 'regfile' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:1213]
+INFO: [Synth 8-6157] synthesizing module 'mux2__parameterized2' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2__parameterized2' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+INFO: [Synth 8-6157] synthesizing module 'signext' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:62]
+	Parameter INPUT bound to: 16 - type: integer 
+	Parameter OUTPUT bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'signext' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:62]
+INFO: [Synth 8-6157] synthesizing module 'eqcmp__parameterized0' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:31]
+INFO: [Synth 8-6155] done synthesizing module 'eqcmp__parameterized0' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:31]
+INFO: [Synth 8-6157] synthesizing module 'eqzerocmp' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:37]
+INFO: [Synth 8-6155] done synthesizing module 'eqzerocmp' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:37]
+INFO: [Synth 8-6157] synthesizing module 'gtzerocmp' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:49]
+INFO: [Synth 8-6155] done synthesizing module 'gtzerocmp' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:49]
+INFO: [Synth 8-6157] synthesizing module 'ltzerocmp' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:55]
+INFO: [Synth 8-6155] done synthesizing module 'ltzerocmp' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:55]
+INFO: [Synth 8-6157] synthesizing module 'mux3' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:117]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux3' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:117]
+INFO: [Synth 8-6155] done synthesizing module 'decodestage' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:605]
+INFO: [Synth 8-6157] synthesizing module 'executestage' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:657]
+INFO: [Synth 8-6157] synthesizing module 'alu' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:1136]
+INFO: [Synth 8-6155] done synthesizing module 'alu' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:1136]
+INFO: [Synth 8-6157] synthesizing module 'shifter' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:1167]
+INFO: [Synth 8-6157] synthesizing module 'mux3__parameterized0' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:117]
+	Parameter WIDTH bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux3__parameterized0' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:117]
+INFO: [Synth 8-6155] done synthesizing module 'shifter' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:1167]
+INFO: [Synth 8-6157] synthesizing module 'mdunit' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:1191]
+INFO: [Synth 8-6157] synthesizing module 'multdiv' [/home/md304/ub465982/mp_exp/mips/hard/multdiv.v:56]
+INFO: [Synth 8-6157] synthesizing module 'mdcontroller' [/home/md304/ub465982/mp_exp/mips/hard/multdiv.v:120]
+INFO: [Synth 8-6157] synthesizing module 'flopenr__parameterized3' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+	Parameter WIDTH bound to: 6 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenr__parameterized3' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+INFO: [Synth 8-6157] synthesizing module 'flopen' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:92]
+	Parameter WIDTH bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopen' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:92]
+INFO: [Synth 8-6157] synthesizing module 'inc' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:151]
+	Parameter WIDTH bound to: 6 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'inc' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:151]
+INFO: [Synth 8-6155] done synthesizing module 'mdcontroller' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/multdiv.v:120]
+INFO: [Synth 8-6157] synthesizing module 'flopenr__parameterized4' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+INFO: [Synth 8-6155] done synthesizing module 'flopenr__parameterized4' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+INFO: [Synth 8-6157] synthesizing module 'boothsel' [/home/md304/ub465982/mp_exp/mips/hard/multdiv.v:308]
+INFO: [Synth 8-6157] synthesizing module 'mux4__parameterized0' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:124]
+	Parameter WIDTH bound to: 34 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux4__parameterized0' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:124]
+INFO: [Synth 8-6157] synthesizing module 'and2' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:139]
+	Parameter WIDTH bound to: 34 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'and2' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:139]
+INFO: [Synth 8-6155] done synthesizing module 'boothsel' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/multdiv.v:308]
+INFO: [Synth 8-6157] synthesizing module 'zerodetect' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:158]
+INFO: [Synth 8-6155] done synthesizing module 'zerodetect' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:158]
+INFO: [Synth 8-6157] synthesizing module 'shl1r2' [/home/md304/ub465982/mp_exp/mips/hard/multdiv.v:284]
+	Parameter WIDTH bound to: 34 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'mux2__parameterized3' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+	Parameter WIDTH bound to: 34 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2__parameterized3' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+INFO: [Synth 8-6155] done synthesizing module 'shl1r2' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/multdiv.v:284]
+INFO: [Synth 8-6157] synthesizing module 'mux3__parameterized1' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:117]
+	Parameter WIDTH bound to: 34 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux3__parameterized1' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:117]
+INFO: [Synth 8-6157] synthesizing module 'xor2' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:145]
+	Parameter WIDTH bound to: 34 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xor2' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:145]
+INFO: [Synth 8-6157] synthesizing module 'adderc' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:23]
+	Parameter WIDTH bound to: 34 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'adderc' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:23]
+INFO: [Synth 8-6157] synthesizing module 'flopenr__parameterized5' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+	Parameter WIDTH bound to: 34 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenr__parameterized5' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+INFO: [Synth 8-6157] synthesizing module 'shl1r2__parameterized0' [/home/md304/ub465982/mp_exp/mips/hard/multdiv.v:284]
+INFO: [Synth 8-6155] done synthesizing module 'shl1r2__parameterized0' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/multdiv.v:284]
+INFO: [Synth 8-6157] synthesizing module 'mux4__parameterized1' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:124]
+INFO: [Synth 8-6155] done synthesizing module 'mux4__parameterized1' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:124]
+INFO: [Synth 8-6155] done synthesizing module 'multdiv' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/multdiv.v:56]
+INFO: [Synth 8-6155] done synthesizing module 'mdunit' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:1191]
+INFO: [Synth 8-6155] done synthesizing module 'executestage' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:657]
+INFO: [Synth 8-6157] synthesizing module 'memorystage' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:719]
+INFO: [Synth 8-6157] synthesizing module 'dec2' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:133]
+INFO: [Synth 8-6155] done synthesizing module 'dec2' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:133]
+INFO: [Synth 8-6157] synthesizing module 'mux2__parameterized4' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+	Parameter WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2__parameterized4' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+INFO: [Synth 8-6157] synthesizing module 'mux3__parameterized2' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:117]
+	Parameter WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux3__parameterized2' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:117]
+INFO: [Synth 8-6157] synthesizing module 'mux4__parameterized2' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:124]
+	Parameter WIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux4__parameterized2' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:124]
+INFO: [Synth 8-6157] synthesizing module 'mux2__parameterized5' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+	Parameter WIDTH bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mux2__parameterized5' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:110]
+INFO: [Synth 8-6157] synthesizing module 'signext__parameterized0' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:62]
+	Parameter INPUT bound to: 8 - type: integer 
+	Parameter OUTPUT bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'signext__parameterized0' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:62]
+INFO: [Synth 8-6155] done synthesizing module 'memorystage' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:719]
+INFO: [Synth 8-6155] done synthesizing module 'datapath' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:421]
+INFO: [Synth 8-6157] synthesizing module 'coprocessor0' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:769]
+INFO: [Synth 8-6157] synthesizing module 'exceptionunit' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:818]
+INFO: [Synth 8-6157] synthesizing module 'prienc_8' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:164]
+INFO: [Synth 8-6155] done synthesizing module 'prienc_8' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:164]
+INFO: [Synth 8-6155] done synthesizing module 'exceptionunit' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:818]
+INFO: [Synth 8-6157] synthesizing module 'epcunit' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:929]
+INFO: [Synth 8-6157] synthesizing module 'flopen__parameterized0' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:92]
+	Parameter WIDTH bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopen__parameterized0' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:92]
+INFO: [Synth 8-6155] done synthesizing module 'epcunit' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:929]
+INFO: [Synth 8-6157] synthesizing module 'statusregunit' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:869]
+INFO: [Synth 8-6157] synthesizing module 'flopenr__parameterized6' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+	Parameter WIDTH bound to: 31 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopenr__parameterized6' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:82]
+INFO: [Synth 8-6157] synthesizing module 'flopen__parameterized1' [/home/md304/ub465982/mp_exp/mips/hard/parts.v:92]
+	Parameter WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'flopen__parameterized1' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/parts.v:92]
+INFO: [Synth 8-6155] done synthesizing module 'statusregunit' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:869]
+INFO: [Synth 8-6157] synthesizing module 'causeregunit' [/home/md304/ub465982/mp_exp/mips/hard/mips.v:916]
+INFO: [Synth 8-6155] done synthesizing module 'causeregunit' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:916]
+INFO: [Synth 8-6155] done synthesizing module 'coprocessor0' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:769]
+INFO: [Synth 8-6155] done synthesizing module 'mips' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/mips.v:21]
+INFO: [Synth 8-6157] synthesizing module 'mem' [/home/md304/ub465982/mp_exp/mips/hard/top.v:87]
+INFO: [Synth 8-3876] $readmem data file 'program.dat' is read successfully [/home/md304/ub465982/mp_exp/mips/hard/top.v:111]
+INFO: [Synth 8-6155] done synthesizing module 'mem' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/top.v:87]
+INFO: [Synth 8-6157] synthesizing module 'timer' [/home/md304/ub465982/mp_exp/mips/hard/top.v:66]
+INFO: [Synth 8-6155] done synthesizing module 'timer' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/top.v:66]
+INFO: [Synth 8-6155] done synthesizing module 'fpga_top' (0#1) [/home/md304/ub465982/mp_exp/mips/hard/top.v:11]
+WARNING: [Synth 8-3848] Net lcd in module/entity fpga_top does not have driver. [/home/md304/ub465982/mp_exp/mips/hard/top.v:16]
+WARNING: [Synth 8-3848] Net ioa in module/entity fpga_top does not have driver. [/home/md304/ub465982/mp_exp/mips/hard/top.v:17]
+WARNING: [Synth 8-3848] Net iob in module/entity fpga_top does not have driver. [/home/md304/ub465982/mp_exp/mips/hard/top.v:18]
+WARNING: [Synth 8-7129] Port reset in module mem is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[31] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[30] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[29] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[27] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[26] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[24] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[23] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[20] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[19] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[18] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[7] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[6] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[5] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[4] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[3] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[2] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[1] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port writedata[0] in module statusregunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clk in module exceptionunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module exceptionunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[31] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[30] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[29] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[28] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[27] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[26] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[25] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[24] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[23] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[22] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[21] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[20] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[19] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[18] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[17] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[16] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[15] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[14] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[13] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[12] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[11] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[10] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[9] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[8] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[7] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[6] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[5] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[4] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[3] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port aluoutM[2] in module memorystage is either unconnected or has no load
+WARNING: [Synth 8-7129] Port yzero in module mdcontroller is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alushcontrol[2] in module mdunit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[31] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[30] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[29] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[28] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[27] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[26] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[25] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[24] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[23] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[22] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[21] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[20] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[19] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[18] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[17] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[16] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[15] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[14] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[13] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[12] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[11] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[10] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[9] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[8] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[7] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[6] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[5] in module shifter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[30] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[29] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[28] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[27] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[26] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[25] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[24] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[23] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[22] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[21] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[20] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[19] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[18] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[17] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[16] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[15] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[14] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[13] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[12] in module ltzerocmp is either unconnected or has no load
+WARNING: [Synth 8-7129] Port a[11] in module ltzerocmp is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2745.656 ; gain = 460.637 ; free physical = 18661 ; free virtual = 32440
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1848.354; parent = 1637.698; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4410.172; parent = 2745.660; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2751.594 ; gain = 466.574 ; free physical = 18661 ; free virtual = 32440
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1848.354; parent = 1637.698; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4416.109; parent = 2751.598; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 2751.594 ; gain = 466.574 ; free physical = 18661 ; free virtual = 32440
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1848.354; parent = 1637.698; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4416.109; parent = 2751.598; children = 1664.512
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2751.594 ; gain = 0.000 ; free physical = 18653 ; free virtual = 32432
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc]
+WARNING: [Vivado 12-584] No ports matched 'ioc[0]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:37]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:37]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[0]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:38]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:38]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[1]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:39]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:39]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[1]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:40]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:40]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[2]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:41]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:41]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[2]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:42]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:42]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[3]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:43]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:43]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[3]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:44]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:44]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[4]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:45]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:45]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[4]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:46]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:46]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[5]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:47]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:47]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[5]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:48]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:48]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[6]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:49]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:49]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[6]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:50]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:50]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[7]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:51]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:51]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'ioc[7]'. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:52]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc:52]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/md304/ub465982/mp_exp/mips/hard/fpga.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/fpga_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/fpga_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2927.344 ; gain = 0.000 ; free physical = 18479 ; free virtual = 32258
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2927.344 ; gain = 0.000 ; free physical = 18479 ; free virtual = 32258
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [/usr/local/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18630 ; free virtual = 32409
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1848.354; parent = 1637.698; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4559.844; parent = 2895.332; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18633 ; free virtual = 32412
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1848.354; parent = 1637.698; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4559.844; parent = 2895.332; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18633 ; free virtual = 32412
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1848.354; parent = 1637.698; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4559.844; parent = 2895.332; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18620 ; free virtual = 32401
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1848.354; parent = 1637.698; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4559.844; parent = 2895.332; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   35 Bit       Adders := 1     
+	   2 Input   32 Bit       Adders := 4     
+	   3 Input   32 Bit       Adders := 1     
+	   2 Input    7 Bit       Adders := 1     
++---XORs : 
+	   2 Input     34 Bit         XORs := 1     
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      2 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               34 Bit    Registers := 1     
+	               32 Bit    Registers := 21    
+	               31 Bit    Registers := 2     
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 5     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 9     
++---RAMs : 
+	             512K Bit	(16384 X 32 bit)          RAMs := 1     
++---Muxes : 
+	   2 Input   34 Bit        Muxes := 8     
+	   2 Input   32 Bit        Muxes := 44    
+	   4 Input   32 Bit        Muxes := 1     
+	   2 Input   31 Bit        Muxes := 1     
+	  27 Input   21 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 1     
+	   2 Input   13 Bit        Muxes := 1     
+	  27 Input   13 Bit        Muxes := 1     
+	  49 Input   11 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 7     
+	   2 Input    7 Bit        Muxes := 4     
+	   8 Input    7 Bit        Muxes := 2     
+	   5 Input    7 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 8     
+	   3 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 3     
+	   8 Input    4 Bit        Muxes := 1     
+	   8 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 1     
+	   9 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 4     
+	   2 Input    1 Bit        Muxes := 15    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18595 ; free virtual = 32382
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1860.149; parent = 1650.211; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4559.844; parent = 2895.332; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping Report (see note below)
++------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object  | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|fpga_top    | mem/RAM_reg | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
++------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
+Distributed RAM: Preliminary Mapping Report (see note below)
++------------+-------------------------------+-----------+----------------------+--------------+
+|Module Name | RTL Object                    | Inference | Size (Depth x Width) | Primitives   | 
++------------+-------------------------------+-----------+----------------------+--------------+
+|fpga_top    | mips/dp/decodestage/rf/rf_reg | Implied   | 32 x 32              | RAM32M x 12  | 
++------------+-------------------------------+-----------+----------------------+--------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18464 ; free virtual = 32250
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1983.052; parent = 1773.146; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4559.844; parent = 2895.332; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:00:35 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18418 ; free virtual = 32204
+Synthesis current peak Physical Memory [PSS] (MB): peak = 2061.006; parent = 1851.099; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4568.328; parent = 2903.816; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping Report
++------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name | RTL Object  | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|fpga_top    | mem/RAM_reg | 16 K x 32(READ_FIRST)  | W | R | 16 K x 32(WRITE_FIRST) |   | R | Port A and B     | 0      | 16     | 
++------------+-------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+
+Distributed RAM: Final Mapping Report
++------------+-------------------------------+-----------+----------------------+--------------+
+|Module Name | RTL Object                    | Inference | Size (Depth x Width) | Primitives   | 
++------------+-------------------------------+-----------+----------------------+--------------+
+|fpga_top    | mips/dp/decodestage/rf/rf_reg | Implied   | 32 x 32              | RAM32M x 12  | 
++------------+-------------------------------+-----------+----------------------+--------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_4 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_5 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_6 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_8 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_8 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_9 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_9 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_10 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_10 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_11 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_11 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_12 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_12 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_13 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_13 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_14 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_14 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_15 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance mem/RAM_reg_15 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:35 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18416 ; free virtual = 32202
+Synthesis current peak Physical Memory [PSS] (MB): peak = 2061.006; parent = 1851.099; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4584.344; parent = 2919.832; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18416 ; free virtual = 32202
+Synthesis current peak Physical Memory [PSS] (MB): peak = 2061.006; parent = 1851.099; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4584.344; parent = 2919.832; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18416 ; free virtual = 32202
+Synthesis current peak Physical Memory [PSS] (MB): peak = 2061.006; parent = 1851.099; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4584.344; parent = 2919.832; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18416 ; free virtual = 32202
+Synthesis current peak Physical Memory [PSS] (MB): peak = 2061.006; parent = 1851.099; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4584.344; parent = 2919.832; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18416 ; free virtual = 32202
+Synthesis current peak Physical Memory [PSS] (MB): peak = 2061.006; parent = 1851.099; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4584.344; parent = 2919.832; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18415 ; free virtual = 32202
+Synthesis current peak Physical Memory [PSS] (MB): peak = 2061.006; parent = 1851.099; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4584.344; parent = 2919.832; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18415 ; free virtual = 32202
+Synthesis current peak Physical Memory [PSS] (MB): peak = 2061.006; parent = 1851.099; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4584.344; parent = 2919.832; children = 1664.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     2|
+|2     |CARRY4   |    61|
+|3     |LUT1     |     4|
+|4     |LUT2     |   145|
+|5     |LUT3     |   288|
+|6     |LUT4     |   174|
+|7     |LUT5     |   389|
+|8     |LUT6     |   578|
+|9     |MUXF7    |     7|
+|10    |RAM32M   |    10|
+|11    |RAM32X1D |     4|
+|12    |RAMB36E1 |    16|
+|28    |FDCE     |   663|
+|29    |FDRE     |    42|
+|30    |IBUF     |     9|
+|31    |OBUF     |     4|
+|32    |OBUFT    |    27|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18417 ; free virtual = 32203
+Synthesis current peak Physical Memory [PSS] (MB): peak = 2061.006; parent = 1851.099; children = 210.655
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 4584.344; parent = 2919.832; children = 1664.512
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 56 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 2927.344 ; gain = 466.574 ; free physical = 18469 ; free virtual = 32256
+Synthesis Optimization Complete : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2927.344 ; gain = 642.324 ; free physical = 18471 ; free virtual = 32257
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2927.344 ; gain = 0.000 ; free physical = 18590 ; free virtual = 32376
+INFO: [Netlist 29-17] Analyzing 98 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 1 inverter(s) to 14 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2943.840 ; gain = 0.000 ; free physical = 18527 ; free virtual = 32314
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 14 instances were transformed.
+  RAM32M => RAM32M (inverted pins: WCLK) (RAMD32(x6), RAMS32(x2)): 10 instances
+  RAM32X1D => RAM32X1D (inverted pins: WCLK) (RAMD32(x2)): 4 instances
+
+Synth Design complete, checksum: 5f9d76d0
+INFO: [Common 17-83] Releasing license: Synthesis
+227 Infos, 120 Warnings, 16 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:39 ; elapsed = 00:00:41 . Memory (MB): peak = 2943.840 ; gain = 976.348 ; free physical = 18769 ; free virtual = 32555
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint '/home/md304/ub465982/mp_exp/mips/soft/project_1/project_1.runs/synth_1/fpga_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file fpga_top_utilization_synth.rpt -pb fpga_top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Dec 11 12:11:29 2023...

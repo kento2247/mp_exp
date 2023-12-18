@@ -1,0 +1,100 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Mon Dec 11 11:41:55 2023
+# Process ID: 13878
+# Current directory: /home/md304/ub465982/mp_exp/mips/soft
+# Command line: vivado
+# Log file: /home/md304/ub465982/mp_exp/mips/soft/vivado.log
+# Journal file: /home/md304/ub465982/mp_exp/mips/soft/vivado.jou
+# Running On: y14c030.educ.cc.keio.ac.jp, OS: Linux, CPU Frequency: 2100.000 MHz, CPU Physical cores: 16, Host memory: 33126 MB
+#-----------------------------------------------------------
+start_gui
+create_project project_1 /home/md304/ub465982/mp_exp/mips/soft/project_1 -part xc7z020clg400-1
+add_files -norecurse /home/md304/ub465982/mp_exp/mips/soft/program.dat
+add_files -norecurse {/home/md304/ub465982/mp_exp/mips/hard/top.v /home/md304/ub465982/mp_exp/mips/hard/mips.v /home/md304/ub465982/mp_exp/mips/hard/parts.v /home/md304/ub465982/mp_exp/mips/hard/multdiv.v}
+add_files -fileset constrs_1 -norecurse /home/md304/ub465982/mp_exp/mips/hard/fpga.xdc
+update_compile_order -fileset sources_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+current_hw_device [get_hw_devices xc7z010_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z010_1] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
+close_hw_manager
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+current_hw_device [get_hw_devices xc7z010_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z010_1] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
+close_hw_manager
+copy_run -name synth_1_copy_1 [get_runs synth_1] 
+set_property part xc7z010clg400-1 [current_project]
+set_property dataflow_viewer_settings "min_width=16"   [current_fileset]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 12
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+current_hw_device [get_hw_devices xc7z010_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z010_1] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
+close_hw_manager
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+current_hw_device [get_hw_devices xc7z010_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z010_1] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
+refresh_hw_device [lindex [get_hw_devices xc7z010_1] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
+close_hw_manager
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+current_hw_device [get_hw_devices xc7z010_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z010_1] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z010_1]
+set_property PROGRAM.FILE {/home/md304/ub465982/mp_exp/mips/soft/program.bin} [get_hw_devices xc7z010_1]
+program_hw_devices [get_hw_devices xc7z010_1]
