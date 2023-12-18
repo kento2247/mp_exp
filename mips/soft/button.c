@@ -1,5 +1,12 @@
 /*
- * Switch functions
+ * ボタンの状態を取得する関数群
+ * ボタンの状態はbtn_statesに格納される
+ * btn_states[0]~btn_states[3]はボタン0~3の状態
+ * btn_states[4]はボタンAの状態
+ * btn_states[5]はボタンCの状態
+ * ボタンが押されているときtrue,通常はfalse
+ * ボタンの状態はbtn_states_update()を呼び出すことで更新される
+ * btn_states_update()はmain()の中で定期的に呼び出す必要がある
  */
 
 #define IO_A_ADDR 0xff18 // between display and speaker
