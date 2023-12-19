@@ -1,8 +1,11 @@
 #pragma once
 
+// 定数の宣言
 #define DISPLAY_ROW 4
 #define DISPLAY_COL 20
 #define LCD_ADDR 0xff0c
+
+// 変数の宣言
 
 // LCD 制御関数のプロトタイプ宣言
 void lcd_demo_animation();

@@ -14,9 +14,9 @@
 # How to edit
 
 - ハードウェアに書き込むファイル: `./mips/soft/test.c`
-> - 本番プログラムを記述するファイル: `./main.c`
-> - 本番プログラムを書き込みファイルに反映: 書き込み時に自動反映: `./write.sh`
-  
+  > - 本番プログラムを記述するファイル: `./main.c`
+  > - 本番プログラムを書き込みファイルに反映: 書き込み時に自動反映: `./write.sh`
+
 > - デバッグプログラムを記述するファイル: `./debug.c`
 > - デバッグプログラムを書き込みファイルに反映: 書き込み時に自動反映: `./debug.sh`
 
@@ -93,7 +93,10 @@
 4. ハンドラー
    > - [ ] 割り込みハンドラーでボタン入力だけ受理
 5. 大域変数
-   > - [ ] ハンドラーで受理したボタン入力を、大域変数に格納
+   > - [x] btn_states[6]: loop 関数で updaate し続ける btn 情報を格納。index0~3 は num0~3btn, inddex4=ioa, index5=ioc
+   > - [x] enable_interrupt: handler 関数の処理を行うかの enable フラグ。割り込みをされたくない場合は false に設定
+   > - [x] handler_cnt: handler 関数が何回呼ばれたか。HANDLER_INTERVAL で定義した ms おきに++1。sleep やタイミング調整で活用
+   > - [ ] game_state: game の状態を管理するための変数
 6. main
    > - [ ] LCD 描画の class のインスタンスを作成
    > - [ ] LCD 描画の class を使用して、LCD に描画する情報を更新する class のインスタンスを作成
