@@ -13,6 +13,7 @@ void lcd_init();
 void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL]);
 void lcd_char(unsigned char data);
 void lcd_str(unsigned char *str);
+void lcd_digit3(unsigned int val);
 
 // LCD アニメーション関数
 void lcd_demo_animation() {
@@ -92,4 +93,29 @@ void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL]) {
     lcd_cmd(pos);
     lcd_str(data[i]);
   }
+}
+
+void lcd_digit3(unsigned int val) {
+  int digit3, digit2, digit1;
+  digit3 = (val < 100) ? ' ' : ((val % 1000) / 100) + '0';
+  digit2 = (val < 10) ? ' ' : ((val % 100) / 10) + '0';
+  digit1 = (val % 10) + '0';
+  lcd_data(digit3);
+  lcd_data(digit2);
+  lcd_data(digit1);
+}
+
+void lcd_customchar(unsigned int addr, unsigned int *bitmap) {
+  lcd_cmd((addr << 3) | 0x40); /* Set CGRAM address */
+  lcd_data(bitmap[0]);
+  lcd_data(bitmap[1]);
+  lcd_data(bitmap[2]);
+  lcd_data(bitmap[3]);
+  lcd_data(bitmap[4]);
+  lcd_data(bitmap[5]);
+  lcd_data(bitmap[6]);
+  lcd_data(0x00); /* Last line is used by cursor */
+  lcd_cmd(0x80);  /* Set DDRAM address (write to display) */
+
+  lcd_data(addr);
 }

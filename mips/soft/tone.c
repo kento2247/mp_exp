@@ -1,3 +1,7 @@
+#pragma once
+
+#include "handler_func.c"
+
 // #define IO_A_ADDR 0xff1a  // between display and speaker
 #define IO_B_ADDR 0xff10  // speaker
 // #define IO_C_ADDR 0xff14  // under the display
@@ -28,7 +32,7 @@ void tone_wait(int n) {
 void tone_play_time(int id, int wait_msec) {
   tone_play(id);
   // tone_wait(wait_msec * 3000);
-  sleep(wait_msec);
+  handler_sleep(wait_msec);
   tone_play(0);
 }
 
