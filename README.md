@@ -14,11 +14,13 @@
 # How to edit
 
 - ハードウェアに書き込むファイル: `./mips/soft/test.c`
+
   > - 本番プログラムを記述するファイル: `./main.c`
   > - 本番プログラムを書き込みファイルに反映: 書き込み時に自動反映: `./write.sh`
 
   > - デバッグプログラムを記述するファイル: `./debug.c`
-  > - デバッグプログラムを書き込みファイルに反映: 書き込み時に自動反映: `./debug.sh`
+  > - デバッグプログラムを書き込みファイルに反映: 書き込み時に自動反映: `./write.sh ファイル名`
+  >   > - kento_debug.c を書き込みたい場合: `./write.sh kento_debug.c`
 
 # Concept
 
@@ -63,6 +65,7 @@
 - 必須条件 2: 大域変数を使用した値共有の仕様
 
   > ## flow chart
+  >
   > ![flowChart](https://github.com/kento2247/mp_exp/assets/42343541/de40fb11-6ef6-4150-869f-655e7db88568)
 
 > ## program
