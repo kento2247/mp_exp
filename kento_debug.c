@@ -10,7 +10,7 @@
 
 // 定数の宣言
 #define MAX_UINT 4294967295
-#define HANDLER_INTERVAL 10  // 10msec
+#define HANDLER_INTERVAL 10 // 10msec
 
 // 変数の宣言
 
@@ -22,31 +22,36 @@ void handler_counter();
 void sleep(unsigned int msec);
 
 // グローバル変数
-int enable_interrupt = 0;  // 割り込みを有効にするかどうか
 
 // 割り込みハンドラ
 // interrupt_handler() is called every 10msec (HANDLER_INTERVAL msec)
-void interrupt_handler() {
-  if (enable_interrupt == 0) return;  // 割り込みが無効なら何もしない
-  handler_counter();                  // ハンドラカウンタを更新する
+void interrupt_handler()
+{
+  if (enable_interrupt == 0)
+    return;          // 割り込みが無効なら何もしない
+  handler_counter(); // ハンドラカウンタを更新する
   game_demo();
 }
 
 // 初期設定
-void setup() {
-  lcd_init();  // LCDの初期化
+void setup()
+{
+  lcd_init(); // LCDの初期化
   lcd_str("setup");
   tone_demo();
   enable_interrupt = 1;
 }
 
 // メインループ
-void loop() {
-  btn_states_update();  // ボタンの状態を更新する
+void loop()
+{
+  btn_states_update(); // ボタンの状態を更新する
 }
 
 // メイン関数
-int main() {
+int main()
+{
   setup();
-  while (1) loop();
+  while (1)
+    loop();
 }

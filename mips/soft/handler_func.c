@@ -5,6 +5,7 @@
 #define HANDLER_INTERVAL 10 // 10msec
 
 // グローバル変数
+int enable_interrupt = 0; // 割り込みを有効にするかどうか
 unsigned int handler_cnt = 0;
 
 void handler_counter()
