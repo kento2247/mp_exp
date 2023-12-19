@@ -15,23 +15,30 @@ int ball_index = 0;  // ボールの位置。左が0、maxはDISPLAY_COL
 int life[2] = {0, 0};
 
 void game_demo() {
+  lcd_clear();
+  lcd_str("demo: ");
   if (btn_get_state(0)) {
-    lcd_str("Button 0 pressed");
+    lcd_str("Button 0");
   }
   if (btn_get_state(1)) {
-    lcd_str("Button 1 pressed");
+    lcd_str("Button 1");
   }
   if (btn_get_state(2)) {
-    lcd_str("Button 2 pressed");
+    lcd_str("Button 2");
   }
   if (btn_get_state(3)) {
-    lcd_str("Button 3 pressed");
+    lcd_str("Button 3");
   }
   if (btn_get_state(4)) {
-    lcd_str("Button A pressed");
+    lcd_str("Button A");
   }
   if (btn_get_state(5)) {
-    lcd_str("Button C pressed");
+    lcd_str("Button C");
+  }
+
+  if (handler_cnt % 1000 > 995) {
+    lcd_clear();
+    lcd_str("handler_cnt > 995");
   }
 }
 

@@ -17,10 +17,12 @@ void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL]);
 void lcd_char(unsigned char data);
 void lcd_str(unsigned char *str);
 void lcd_digit3(unsigned int val);
+void lcd_customchar(unsigned int addr, unsigned int *bitmap);
+void lcd_clear();
 
 // LCD アニメーション関数
 void lcd_demo_animation() {
-  lcd_init();
+  lcd_clear();
   unsigned char data[DISPLAY_ROW][DISPLAY_COL] = {
       " Hello, World.      ", " Hello, World.      ", " Hello, World.      ",
       " Hello, World.      "};
@@ -78,6 +80,7 @@ void lcd_str(unsigned char *str) {
 void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL]) {
   int i;
   int pos;  // address
+  lcd_clear();
   for (i = 0; i < DISPLAY_ROW; i++) {
     switch (i) {
       case 0:
@@ -122,3 +125,5 @@ void lcd_customchar(unsigned int addr, unsigned int *bitmap) {
 
   lcd_data(addr);
 }
+
+void lcd_clear() { lcd_cmd(0x01); /* Clear display */ }
