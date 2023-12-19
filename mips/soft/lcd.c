@@ -75,6 +75,7 @@ void lcd_init() {
 
 void lcd_str(unsigned char *str) {
   while (*str != '\0') lcd_data(*str++);
+  lcd_wait(1);
 }
 
 void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL]) {
