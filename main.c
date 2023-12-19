@@ -17,30 +17,34 @@ void handler_counter();
 void sleep(unsigned int msec);
 
 // グローバル変数
-int enable_interrupt = 0;  // 割り込みを有効にするかどうか
 
 // 割り込みハンドラ
 // interrupt_handler() is called every 10msec (HANDLER_INTERVAL msec)
-void interrupt_handler() {
-  if (enable_interrupt == 0) return;  // 割り込みが無効なら何もしない
-  handler_counter();                  // ハンドラカウンタを更新する
+void interrupt_handler()
+{
+  if (enable_interrupt == 0)
+    return;          // 割り込みが無効なら何もしない
+  handler_counter(); // ハンドラカウンタを更新する
 }
 
 // 初期設定
-void setup() {
-  lcd_init();  // LCDの初期化
-  game_init();
+void setup()
+{
+  lcd_init(); // LCDの初期化
   tone_demo();
-  enable_interrupt = 1;  // 割り込みを有効にする（開始）
+  enable_interrupt = 1; // 割り込みを有効にする（開始）
 }
 
 // メインループ
-void loop() {
-  btn_states_update();  // ボタンの状態を更新する
+void loop()
+{
+  btn_states_update(); // ボタンの状態を更新する
 }
 
 // メイン関数
-void main() {
+void main()
+{
   setup();
-  while (1) loop();
+  while (1)
+    loop();
 }
