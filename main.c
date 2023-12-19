@@ -29,6 +29,7 @@ void interrupt_handler() {
 // 初期設定
 void setup() {
   lcd_init();  // LCDの初期化
+  game_init();
   tone_demo();
   enable_interrupt = 1;  // 割り込みを有効にする（開始）
 }

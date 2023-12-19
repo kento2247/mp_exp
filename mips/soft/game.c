@@ -11,6 +11,8 @@ void game_opening();
 
 // ゲームの状態を表す変数
 int game_state = 0;  // 0: opening, 1: playing, 2: ending
+int ball_index = 0;  // ボールの位置。左が0、maxはDISPLAY_COL
+int life[2] = {0, 0};
 
 void game_demo() {
   if (btn_get_state(0)) {
@@ -33,6 +35,13 @@ void game_demo() {
   }
 }
 
+void game_init() {
+  int i = 0;
+  for (i = 0; i < 2; i++) life[i] = 0;
+  ball_index = 0;
+  game_state = 0;
+}
+
 void game_opening() {
   lcd_str("Press any button");
   while (1) {
@@ -43,4 +52,15 @@ void game_opening() {
     }
   }
   lcd_str("Game start!");
+}
+
+void game_ending(int winner) {
+  unsigned char data[DISPLAY_ROW][DISPLAY_COL] = {
+      "game end.", "winner player is", "", "press any button to end."};
+  if (winner == 0)
+    data[DISPLAY_ROW - 2][0] = 'a';
+  else if (winner == 1)
+    data[DISPLAY_ROW - 2][0] = 'c';
+  else
+    data[DISPLAY_ROW - 2][0] = ' ';
 }
