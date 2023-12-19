@@ -23,9 +23,6 @@ void handler_sleep(unsigned int msec)
   unsigned int add_time = msec / HANDLER_INTERVAL;
   unsigned int laxucity = MAX_UINT - start; // オーバーフローまでの猶予
   unsigned int end;
-  int is_enable_interrupt = enable_interrupt;
-  if (enable_interrupt == 0)
-    enable_interrupt = 1;
   if (laxucity < add_time)
   {
     unsigned int difference = add_time - laxucity;
@@ -40,5 +37,4 @@ void handler_sleep(unsigned int msec)
     // nop
     ;
   }
-  enable_interrupt = is_enable_interrupt;
 }
