@@ -39,6 +39,7 @@ void setup()
   lcd_init(); // LCDの初期化
   lcd_str("setup");
   tone_demo();
+  lcd_str("tone demo end");
   enable_interrupt = 1;
 }
 

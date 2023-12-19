@@ -17,8 +17,6 @@ module fpga_top (
 	output	reg	[7:0]	ioa,
 	output	reg	[7:0]	iob,
 	input		[3:0]	ioc
-
-	
 );
 
 wire	[31:0]	pc, instr, readdata, readdata0, readdata1, readdata5, readdata6, writedata, dataadr;
