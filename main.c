@@ -53,6 +53,11 @@ void main()
   {
     if (state == INIT)
     {
+      lcd_init();
+      state = OPENING;
+    }
+    else if (state == OPENING)
+    {
       start_display();
       while (!ioc_check_0()) // ボタンが押されるのを待つ(未完成）
       {
