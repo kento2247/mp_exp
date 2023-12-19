@@ -59,7 +59,7 @@ void main()
     else if (state == OPENING)
     {
       start_display();
-      while (!ioc_check_0()) // ボタンが押されるのを待つ(未完成）
+      while (!ioa_check_0()) // ボタンが押されるのを待つ
       {
         ;
       }
@@ -74,7 +74,7 @@ void main()
     else if (state == ENDING)
     {
       end_display();
-      while (~btn_check_my()) // ボタンが押されるのを待つ(未完成）
+      while (!ioa_check_0()) // ボタンが押されるのを待つ
       {
       }
       state = OPENING;
@@ -154,9 +154,7 @@ void show_ball(int pos)
 /*
  * Switch functions
  */
-int btn_check_my() // 何らかのボタンが押されたかどうか(未完成）
-{
-}
+
 int btn_check_0()
 {
   volatile int *sw_ptr = (int *)0xff04;
@@ -179,6 +177,13 @@ int btn_check_3()
 int ioc_check_0()
 {
   volatile int *sw_ptr = (int *)0xff14;
+  ;
+  return (*sw_ptr & 0x1) ? 1 : 0;
+}
+
+int ioa_check_0()
+{
+  volatile int *sw_ptr = (int *)0xff18;
   ;
   return (*sw_ptr & 0x1) ? 1 : 0;
 }
