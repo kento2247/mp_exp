@@ -75,11 +75,9 @@ void lcd_init()
   lcd_cmd(0x02); /* return cursor to home position */
 }
 
-void lcd_str(unsigned char *str)
-{
-  lcd_cmd(0x02); /* return cursor to home position */
-  while (*str != '\0')
-    lcd_data(*str++);
+void lcd_str(unsigned char *str) {
+  while (*str != '\0') lcd_data(*str++);
+  lcd_wait(1);
 }
 
 void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL])

@@ -19,26 +19,22 @@ void game_demo() {
   lcd_str("demo: ");
   if (btn_get_state(0)) {
     lcd_str("Button 0");
-  }
-  if (btn_get_state(1)) {
+  } else if (btn_get_state(1)) {
     lcd_str("Button 1");
-  }
-  if (btn_get_state(2)) {
+  } else if (btn_get_state(2)) {
     lcd_str("Button 2");
-  }
-  if (btn_get_state(3)) {
+  } else if (btn_get_state(3)) {
     lcd_str("Button 3");
-  }
-  if (btn_get_state(4)) {
+  } else if (btn_get_state(4)) {
     lcd_str("Button A");
-  }
-  if (btn_get_state(5)) {
+  } else if (btn_get_state(5)) {
     lcd_str("Button C");
   }
 
-  if (handler_cnt % 1000 > 995) {
+  if (handler_cnt % 5000 > 4995) {
     lcd_clear();
-    lcd_str("handler_cnt > 995");
+    lcd_str("handler_cnt > 4995");
+    handler_sleep(1000);
   }
 }
 
