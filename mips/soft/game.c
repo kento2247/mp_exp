@@ -47,7 +47,7 @@ void game_demo()
   {
     lcd_clear();
     lcd_str("handler_cnt > 4995");
-    handler_sleep(1000);
+    handler_sleep(100);
   }
 }
 
