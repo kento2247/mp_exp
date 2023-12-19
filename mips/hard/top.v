@@ -14,7 +14,7 @@ module fpga_top (
 	input		[3:0]	btn,
 	output 	reg	[3:0]	led,
 	output 	reg	[10:0]	lcd,
-	output	reg	[7:0]	ioa,
+	input		[3:0]	ioa,
 	output	reg	[7:0]	iob,
 	input		[3:0]	ioc
 
@@ -24,7 +24,7 @@ module fpga_top (
 wire	[31:0]	pc, instr, readdata, readdata0, readdata1, readdata5, readdata6, writedata, dataadr;
 wire	[3:0]	byteen;
 wire		reset;
-wire		memwrite, memtoregM, swc, cs0, cs1, cs2, cs3, cs4, cs5, irq;
+wire		memwrite, memtoregM, swc, cs0, cs1, cs2, cs3, cs4, cs5, cs6, irq;
 reg		clk_62p5mhz;
 
 reg [7:0] mode;
