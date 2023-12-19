@@ -15,15 +15,24 @@
 // #define IO_B_ADDR 0xff10  // speaker
 #define IO_C_ADDR 0xff14  // under the display
 #define BTN_ADDR 0xff04
+#define BUTTON_NUM 6
 
 // 関数のプロトタイプ宣言
+int btn_get_state(int button_num);
 void btn_states_update();
 int btn_check_num(int button_num);
 int btn_check_a();
 int btn_check_c();
 
 // ボタンの状態を格納する配列
-int btn_states[6];
+int btn_states[BUTTON_NUM];
+
+// ボタンの状態を取得する
+int btn_get_state(int button_num) {
+  int state = btn_states[button_num];
+  btn_states[button_num] = 0;
+  return state;
+}
 
 // ボタンの状態を更新する
 void btn_states_update() {
