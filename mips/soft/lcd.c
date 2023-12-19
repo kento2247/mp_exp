@@ -2,8 +2,11 @@
 
 #define DISPLAY_ROW 4
 #define DISPLAY_COL 20
+#define LCD_ADDR 0xff0c
 
 // LCD 制御関数のプロトタイプ宣言
+void lcd_demo_animation();
+void lcd_data(unsigned char data);
 void lcd_wait(int n);
 void lcd_cmd(unsigned char cmd);
 void lcd_init();
@@ -32,9 +35,10 @@ void lcd_wait(int n) {
   for (i = 0; i < n; i++)
     ;
 }
+
 void lcd_cmd(unsigned char cmd) {
   /* E, RS, RW, DB[7:0] */
-  volatile int *lcd_ptr = (int *)0xff0c;
+  volatile int *lcd_ptr = (int *)LCD_ADDR;
   *lcd_ptr = (0x000000ff & cmd) | 0x00000000; /* E=0,RS=0,RW=0 */
   lcd_wait(1);
   *lcd_ptr = (0x000000ff & cmd) | 0x00000400; /* E=1,RS=0,RW=0 */
@@ -42,9 +46,10 @@ void lcd_cmd(unsigned char cmd) {
   *lcd_ptr = (0x000000ff & cmd) | 0x00000000; /* E=0,RS=0,RW=0 */
   lcd_wait(11389);
 }
+
 void lcd_data(unsigned char data) {
   /* E, RS, RW, DB[7:0] */
-  volatile int *lcd_ptr = (int *)0xff0c;
+  volatile int *lcd_ptr = (int *)LCD_ADDR;
   *lcd_ptr = (0x000000ff & data) | 0x00000200; /* E=0,RS=1,RW=0 */
   lcd_wait(1);
   *lcd_ptr = (0x000000ff & data) | 0x00000600; /* E=1,RS=1,RW=0 */
@@ -52,6 +57,7 @@ void lcd_data(unsigned char data) {
   *lcd_ptr = (0x000000ff & data) | 0x00000200; /* E=0,RS=1,RW=0 */
   lcd_wait(278);
 }
+
 void lcd_init() {
   lcd_wait(104167);
   lcd_cmd(0x38); /* 8-bit, 2-line mode */
@@ -60,6 +66,7 @@ void lcd_init() {
   lcd_cmd(0x01); /* Clear display */
   lcd_wait(10417);
 }
+
 void lcd_str(unsigned char *str) {
   while (*str != '\0') lcd_data(*str++);
 }

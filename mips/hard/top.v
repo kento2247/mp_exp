@@ -96,11 +96,12 @@ module timer (
 );
 reg	[22:0]	counter;
 
-assign	irq = (counter == 23'd6250000);
+// 100msecから10msecに変更。6250000->625000
+assign	irq = (counter == 23'd625000);
 
 always @ (posedge clk or posedge reset)
 	if (reset) 			counter	<= 0;
-	else if (counter < 23'd6250000)	counter	<= counter + 1;
+	else if (counter < 23'd625000)	counter	<= counter + 1; // 100msecから10msecに変更。6250000->625000
 	else 				counter	<= 0;
 endmodule
 

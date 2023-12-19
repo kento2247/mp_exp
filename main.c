@@ -8,23 +8,33 @@
 
 // 定数の宣言
 #define MAX_UINT 4294967295
-#define HANDLER_INTERVAL 100  // 100msec
+#define HANDLER_INTERVAL 10  // 10msec
 
 // 関数のプロトタイプ宣言
-void main();
+void interrupt_handler();
 void setup();
 void loop();
-void interrupt_handler();
+void main();
+void handler_counter();
 void sleep(unsigned int msec);
 
 // グローバル変数
 unsigned int handler_cnt = 0;
 
 // 割り込みハンドラ
+// interrupt_handler() is called every 10msec (HANDLER_INTERVAL msec)
 void interrupt_handler() {
-  // interrupt_handler() is called every 100msec (HANDLER_INTERVAL msec)
-  handler_cnt++;
-  if (handler_cnt >= MAX_UINT) handler_cnt = 0;
+  handler_counter();  // ハンドラカウンタを更新する
+}
+
+// 初期設定
+void setup() {
+  lcd_init();  // LCDの初期化
+}
+
+// メインループ
+void loop() {
+  btn_states_update();  // ボタンの状態を更新する
 }
 
 // メイン関数
@@ -33,16 +43,14 @@ void main() {
   while (1) loop();
 }
 
-// 初期設定
-void setup() {}
-
-// メインループ
-void loop() {
-  btn_states_update();  // ボタンの状態を更新する
+void handler_counter() {
+  // ハンドラカウンタを更新する
+  handler_cnt++;
+  if (handler_cnt >= MAX_UINT) handler_cnt = 0;
 }
 
 void sleep(unsigned int msec) {
-  // 100msec単位でsleepする関数
+  // 10msec単位でsleepする関数
   unsigned int start = handler_cnt;
   unsigned int add_time = msec / HANDLER_INTERVAL;
   unsigned int laxucity = MAX_UINT - start;  // オーバーフローまでの猶予
