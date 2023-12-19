@@ -1,4 +1,5 @@
 #pragma once
+#include "lcd.c"
 
 // 定数の宣言
 #define MAX_UINT 4294967295
@@ -35,6 +36,7 @@ void handler_sleep(unsigned int msec)
   while (handler_cnt < end)
   {
     // nop
+    lcd_digit3(handler_cnt);
     ;
   }
 }
