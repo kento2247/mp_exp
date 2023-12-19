@@ -21,7 +21,8 @@ void lcd_customchar(unsigned int addr, unsigned int *bitmap);
 void lcd_clear();
 
 // LCD アニメーション関数
-void lcd_demo_animation() {
+void lcd_demo_animation()
+{
   lcd_clear();
   unsigned char data[DISPLAY_ROW][DISPLAY_COL] = {
       " Hello, World.      ", " Hello, World.      ", " Hello, World.      ",
@@ -72,33 +73,42 @@ void lcd_data(unsigned char data)
 
 void lcd_init()
 {
-  lcd_cmd(0x02); /* return cursor to home position */
+  lcd_wait(104167);
+  lcd_cmd(0x38); /* 8-bit, 2-line mode */
+  lcd_cmd(0x06); /* Cursor auto increment */
+  lcd_cmd(0x0c); /* Display ON */
+  lcd_cmd(0x01); /* Clear display */
+  lcd_wait(10417);
 }
 
-void lcd_str(unsigned char *str) {
-  while (*str != '\0') lcd_data(*str++);
+void lcd_str(unsigned char *str)
+{
+  while (*str != '\0')
+    lcd_data(*str++);
   lcd_wait(1);
 }
 
 void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL])
 {
   int i;
-  int pos;  // address
+  int pos; // address
   lcd_clear();
-  for (i = 0; i < DISPLAY_ROW; i++) {
-    switch (i) {
-      case 0:
-        pos = 0x80;
-        break;
-      case 1:
-        pos = 0xc0;
-        break;
-      case 2:
-        pos = 0x94;
-        break;
-      case 3:
-        pos = 0xd4;
-        break;
+  for (i = 0; i < DISPLAY_ROW; i++)
+  {
+    switch (i)
+    {
+    case 0:
+      pos = 0x80;
+      break;
+    case 1:
+      pos = 0xc0;
+      break;
+    case 2:
+      pos = 0x94;
+      break;
+    case 3:
+      pos = 0xd4;
+      break;
     }
     lcd_cmd(pos);
     lcd_str(data[i]);
@@ -132,4 +142,8 @@ void lcd_customchar(unsigned int addr, unsigned int *bitmap)
   lcd_data(addr);
 }
 
-void lcd_clear() { lcd_cmd(0x01); /* Clear display */ }
+void lcd_clear()
+{
+  lcd_cmd(0x01); /* Clear display */
+  lcd_wait(1);
+}
