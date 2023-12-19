@@ -17,8 +17,8 @@
   > - 本番プログラムを記述するファイル: `./main.c`
   > - 本番プログラムを書き込みファイルに反映: 書き込み時に自動反映: `./write.sh`
 
-> - デバッグプログラムを記述するファイル: `./debug.c`
-> - デバッグプログラムを書き込みファイルに反映: 書き込み時に自動反映: `./debug.sh`
+  > - デバッグプログラムを記述するファイル: `./debug.c`
+  > - デバッグプログラムを書き込みファイルに反映: 書き込み時に自動反映: `./debug.sh`
 
 # Concept
 
@@ -62,9 +62,8 @@
 - 必須条件 1: 割り込みハンドラの処理と main の処理を分ける
 - 必須条件 2: 大域変数を使用した値共有の仕様
 
-> ## flow chart
->
-> ![flowChart](https://github.com/kento2247/mp_exp/assets/42343541/de40fb11-6ef6-4150-869f-655e7db88568)
+  > ## flow chart
+  > ![flowChart](https://github.com/kento2247/mp_exp/assets/42343541/de40fb11-6ef6-4150-869f-655e7db88568)
 
 > ## program
 
