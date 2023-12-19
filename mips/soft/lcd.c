@@ -19,14 +19,18 @@ void lcd_str(unsigned char *str);
 void lcd_digit3(unsigned int val);
 
 // LCD アニメーション関数
-void lcd_demo_animation() {
+void lcd_demo_animation()
+{
   lcd_init();
   unsigned char data[DISPLAY_ROW][DISPLAY_COL] = {
       " Hello, World.      ", " Hello, World.      ", " Hello, World.      ",
       " Hello, World.      "};
   int i, j;
-  for (i = 0; i < DISPLAY_COL; i++) {
-    for (j = 0; j < DISPLAY_ROW; j++) {
+  for (i = 0; i < DISPLAY_COL; i++)
+  {
+    lcd_cmd(0x02); /* return cursor to home position */
+    for (j = 0; j < DISPLAY_ROW; j++)
+    {
       data[j][i] = ' ';
     }
     lcd_update(data);
@@ -34,13 +38,15 @@ void lcd_demo_animation() {
   }
 }
 
-void lcd_wait(int n) {
+void lcd_wait(int n)
+{
   int i;
   for (i = 0; i < n; i++)
     ;
 }
 
-void lcd_cmd(unsigned char cmd) {
+void lcd_cmd(unsigned char cmd)
+{
   /* E, RS, RW, DB[7:0] */
   volatile int *lcd_ptr = (int *)LCD_ADDR;
   *lcd_ptr = (0x000000ff & cmd) | 0x00000000; /* E=0,RS=0,RW=0 */
@@ -51,7 +57,8 @@ void lcd_cmd(unsigned char cmd) {
   lcd_wait(11389);
 }
 
-void lcd_data(unsigned char data) {
+void lcd_data(unsigned char data)
+{
   /* E, RS, RW, DB[7:0] */
   volatile int *lcd_ptr = (int *)LCD_ADDR;
   *lcd_ptr = (0x000000ff & data) | 0x00000200; /* E=0,RS=1,RW=0 */
@@ -62,43 +69,46 @@ void lcd_data(unsigned char data) {
   lcd_wait(278);
 }
 
-void lcd_init() {
-  lcd_wait(104167);
-  lcd_cmd(0x38); /* 8-bit, 2-line mode */
-  lcd_cmd(0x06); /* Cursor auto increment */
-  lcd_cmd(0x0c); /* Display ON */
-  lcd_cmd(0x01); /* Clear display */
-  lcd_wait(10417);
+void lcd_init()
+{
+  lcd_cmd(0x02); /* return cursor to home position */
 }
 
-void lcd_str(unsigned char *str) {
-  while (*str != '\0') lcd_data(*str++);
+void lcd_str(unsigned char *str)
+{
+  lcd_cmd(0x02); /* return cursor to home position */
+  while (*str != '\0')
+    lcd_data(*str++);
 }
 
-void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL]) {
+void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL])
+{
   int i;
-  int pos;  // address
-  for (i = 0; i < DISPLAY_ROW; i++) {
-    switch (i) {
-      case 0:
-        pos = 0x80;
-        break;
-      case 1:
-        pos = 0xc0;
-        break;
-      case 2:
-        pos = 0x94;
-        break;
-      case 3:
-        pos = 0xd4;
-        break;
+  int pos; // address
+  for (i = 0; i < DISPLAY_ROW; i++)
+  {
+    switch (i)
+    {
+    case 0:
+      pos = 0x80;
+      break;
+    case 1:
+      pos = 0xc0;
+      break;
+    case 2:
+      pos = 0x94;
+      break;
+    case 3:
+      pos = 0xd4;
+      break;
     }
     lcd_cmd(pos);
     lcd_str(data[i]);
   }
 }
 
-void lcd_digit3(unsigned int val) {
+void lcd_digit3(unsigned int val)
+{
   int digit3, digit2, digit1;
   digit3 = (val < 100) ? ' ' : ((val % 1000) / 100) + '0';
   digit2 = (val < 10) ? ' ' : ((val % 100) / 10) + '0';
@@ -108,7 +118,8 @@ void lcd_digit3(unsigned int val) {
   lcd_data(digit1);
 }
 
-void lcd_customchar(unsigned int addr, unsigned int *bitmap) {
+void lcd_customchar(unsigned int addr, unsigned int *bitmap)
+{
   lcd_cmd((addr << 3) | 0x40); /* Set CGRAM address */
   lcd_data(bitmap[0]);
   lcd_data(bitmap[1]);
