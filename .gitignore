@@ -29,3 +29,4 @@ mips/sim/dump.vcd
 
 # ./debug.*
 debug.c
+debug2.c
