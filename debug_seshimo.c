@@ -20,12 +20,28 @@ void sleep(unsigned int msec);
 int pos;
 int cnt;
 int just_flag = 0;
+unsigned int hp_playerA = 5;
+unsigned int hp_playerB = 5;
+
+unsigned char intToChar(int num)
+{
+    unsigned char res = '0' + num;
+    return res;
+}
 
 void show_ball(int pos)
 {
     lcd_cmd(0x01); /* Clear display */
     lcd_cmd(0xc0 + pos);
     lcd_data('o');
+    lcd_cmd(0xd4);
+    lcd_str("HP");
+    lcd_cmd(0xd4 + 3);
+    lcd_data(intToChar(hp_playerA));
+    lcd_cmd(0xd4 + 15);
+    lcd_str("HP")
+    lcd_cmd(0xd4 + 19);
+    lcd_data(intToChar(hp_playerB));
 }
 
 // 割り込みハンドラ
@@ -38,6 +54,8 @@ void interrupt_handler()
     if (game_state == 0)
     {
         cnt = 0;
+        hp_playerA = 5;
+        hp_playerB = 5;
     }
     if (game_state == 1)
     {
@@ -68,7 +86,6 @@ void setup()
     game_init();
     // tone_demo();
     enable_interrupt = 1; // 割り込みを有効にする（開始）
-    game_state = 1;
 }
 
 void play()
@@ -121,6 +138,7 @@ void loop()
 void main()
 {
     setup();
+    game_opening();
     while (1)
         loop();
 }

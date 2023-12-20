@@ -62,7 +62,10 @@ void game_init()
 
 void game_opening()
 {
+  lcd_cmd(0x01);
+  lcd_cmd(0x80);
   lcd_str("Press any button");
+  /*
   while (1)
   {
     if (btn_states[0] || btn_states[1] || btn_states[2] || btn_states[3] ||
@@ -72,7 +75,16 @@ void game_opening()
       break;
     }
   }
+  */
+
+  while (!btn_check_a())
+  {
+  }
+  game_state = 1;
+  lcd_cmd(0x01);
+  lcd_cmd(0xc0 + 5);
   lcd_str("Game start!");
+  // handler_sleep(10); あんまり意味なかった
 }
 
 void game_ending(int winner)
