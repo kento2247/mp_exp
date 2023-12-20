@@ -19,6 +19,7 @@ void sleep(unsigned int msec);
 // グローバル変数
 int pos;
 int cnt;
+int just_flag = 0;
 
 void show_ball(int pos)
 {
@@ -42,9 +43,20 @@ void interrupt_handler()
     {
         pos = (cnt < 200) ? cnt / 10 : 39 - cnt / 10;
         show_ball(pos);
-        if (++cnt >= 400)
+        if (just_flag == 0)
         {
-            cnt = 0;
+            if (++cnt >= 400)
+            {
+                cnt = 0;
+            }
+        }
+        else if (just_flag == 1)
+        {
+            cnt = cnt + 2;
+            if (cnt >= 400)
+            {
+                cnt = 0;
+            }
         }
     }
 }
@@ -68,27 +80,33 @@ void play()
         if ((cnt >= 360 && cnt <= 369) && btn_check_a())
         {
             cnt = 30;
+            just_flag = 0;
         }
         else if ((cnt >= 370 && cnt <= 379) && btn_check_a())
         {
             cnt = 20;
+            just_flag = 1;
         }
         else if ((cnt >= 380 && cnt <= 389) && btn_check_a())
         {
             cnt = 10;
+            just_flag = 0;
         }
 
         else if ((cnt >= 160 && cnt <= 169) && btn_check_a())
         {
             cnt = 230;
+            just_flag = 0;
         }
         else if ((cnt >= 170 && cnt <= 179) && btn_check_a())
         {
             cnt = 220;
+            just_flag = 1;
         }
         else if ((cnt >= 180 && cnt <= 189) && btn_check_a())
         {
             cnt = 210;
+            just_flag = 0;
         }
     }
 }
