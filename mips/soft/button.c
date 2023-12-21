@@ -42,6 +42,9 @@ void btn_wait_any() {
       break;
     }
   }
+  for (int i = 0; i < 6; i++) {
+    btn_states[i] = 0;
+  }
 }
 
 // ボタンの状態を更新する
