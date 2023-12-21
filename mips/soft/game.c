@@ -28,6 +28,8 @@ void game_init() {
   int i = 0;
   for (i = 0; i < 2; i++) life[i] = 5;
   game_state = 0;
+  virturl_index = 0;
+  move_direction = 1;
 }
 
 void game_opening() {
@@ -85,12 +87,8 @@ void game_judge() {
       just_flag = 0;
     } else if ((virturl_index > 180 && virturl_index <= 190)) {
       just_flag = 1;
-    } else if ((virturl_index > 190 && virturl_index <= 300)) {
+    } else if ((virturl_index > 190 && virturl_index <= 200)) {
       just_flag = 0;
-    } else if (virturl_index > 200) {
-      life[0]--;  // Aはdeadline miss
-      play_stop_flag = 1;
-      virturl_index = 200;
     } else
       move_direction = !move_direction;  // ボールの移動方向を反転
     move_direction = !move_direction;    // ボールの移動方向を反転
@@ -101,11 +99,9 @@ void game_judge() {
       just_flag = 1;
     } else if ((virturl_index >= 0 && virturl_index < 10)) {
       just_flag = 0;
-    } else if (virturl_index < 0) {
-      life[1]--;  // Cはdeadline miss
-      play_stop_flag = 1;
-      virturl_index = 0;
-    }
+    } else
+      move_direction = !move_direction;  // ボールの移動方向を反転
+    move_direction = !move_direction;    // ボールの移動方向を反転
   }
 
   if (!play_stop_flag) {  // 通常モード
@@ -123,9 +119,16 @@ void game_judge() {
     }
   }
   if (virturl_index > 200) {
-    virturl_index = 200;  // 点数をとられてしまうから0に戻す必要はない
+    life[1]--;  // Cはdeadline miss
+    play_stop_flag = 1;
+    virturl_index = 200;
+    move_direction = -1;  // ボールの移動方向を左へ
   } else if (virturl_index < 0) {
     virturl_index = 0;
+    life[0]--;  // Aはdeadline miss
+    play_stop_flag = 1;
+    virturl_index = 0;
+    move_direction = 1;  // ボールの移動方向を右へ
   }
   game_show_ball(virturl_index / 10);
 }
