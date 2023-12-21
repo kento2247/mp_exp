@@ -55,7 +55,7 @@ void game_ending(int winner) {
     data[DISPLAY_ROW - 2][0] = ' ';
 }
 
-void game_show_ball(ball_index) {
+void game_show_ball(int ball_index) {
   lcd_cmd(0x01);               /* Clear display */
   lcd_cmd(0xc0 + ball_index);  // 2列目をボールが往復する
   lcd_data('o');
