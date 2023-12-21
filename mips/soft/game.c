@@ -118,17 +118,17 @@ void game_judge() {
         virturl_index = virturl_index - 2;
     }
   }
+
   if (virturl_index > 200) {
+    move_direction = 0;  // ボールの移動方向を左へ
+    virturl_index = 200;
     life[1]--;  // Cはdeadline miss
     play_stop_flag = 1;
-    virturl_index = 200;
-    move_direction = -1;  // ボールの移動方向を左へ
   } else if (virturl_index < 0) {
+    move_direction = 1;  // ボールの移動方向を右へ
     virturl_index = 0;
     life[0]--;  // Aはdeadline miss
     play_stop_flag = 1;
-    virturl_index = 0;
-    move_direction = 1;  // ボールの移動方向を右へ
   }
   game_show_ball(virturl_index / 10);
 }
