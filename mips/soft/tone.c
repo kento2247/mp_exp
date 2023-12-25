@@ -3,7 +3,7 @@
 #include "handler_func.c"
 
 // #define IO_A_ADDR 0xff1a  // between display and speaker
-#define IO_B_ADDR 0xff10  // speaker
+#define IO_B_ADDR 0xff10 // speaker
 // #define IO_C_ADDR 0xff14  // under the display
 // #define BTN_ADDR 0xff04
 
@@ -12,7 +12,9 @@ void tone_play(int id);
 void tone_play_time(int id, int wait_msec);
 void tone_wait(int n);
 
-void tone_demo() {
+void tone_demo()
+{
+  /*
   tone_play_time(5, 200);
   tone_play_time(0, 300);
   tone_play_time(5, 200);
@@ -20,23 +22,34 @@ void tone_demo() {
   tone_play_time(5, 200);
   tone_play_time(6, 200);
   tone_play_time(8, 200);
+  */
+  tone_play_time(0, 50);
+  tone_play_time(1, 50);
+  tone_play_time(2, 50);
+  tone_play_time(3, 50);
+  tone_play_time(3, 2);
+  tone_play_time(4, 2);
+  tone_play_time(5, 2);
 }
 
-void tone_wait(int n) {
+void tone_wait(int n)
+{
   // 3000 ~= 1msec。nクロック待つ
   int i;
   for (i = 0; i < n; i++)
     ;
 }
 
-void tone_play_time(int id, int wait_msec) {
+void tone_play_time(int id, int wait_msec)
+{
   tone_play(id);
   // tone_wait(wait_msec * 3000);
   handler_sleep(wait_msec);
   tone_play(0);
 }
 
-void tone_play(int id) {
+void tone_play(int id)
+{
   // (mode == 1) ? 14931 * 2 : /* C */
   //     (mode == 2) ? 14093 * 2
   //                 : /* C# */

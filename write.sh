@@ -1,3 +1,5 @@
+set -euo pipefail
+
 touch ./mips/soft/test.c
 
 if [ "$#" -ne 1 ]; then
