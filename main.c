@@ -13,7 +13,6 @@ void interrupt_handler();
 void setup();
 void loop();
 void main();
-
 // グローバル変数
 
 // 割り込みハンドラ
@@ -50,9 +49,14 @@ void interrupt_handler()
 }
 
 // 初期設定
-void setup()
-{
-  lcd_init(); // LCDの初期化
+
+void setup() {
+  lcd_init();
+  lcd_customchar1(0x03, bitmap);
+  lcd_data(0x03);
+  lcd_customchar2(0x20, bitmap);
+  lcd_data(0x07);  // LCDとラケット表示の初期化
+
   // lcd_demo_animation();
   // tone_demo();
   enable_interrupt = 1; // 割り込みを有効にする（開始）

@@ -6,6 +6,14 @@
 #define LCD_ADDR 0xff0c
 
 // 変数の宣言
+unsigned int bitmap[7] = {   0x0E, /* 01110 */
+                             0x0A, /* 01010 */
+                             0x0A, /* 01010 */
+                             0x0E, /* 01110 */
+                             0x04, /* 00100 */
+                             0x04, /* 00100 */
+                             0x04, /* 00100 */
+                                };
 
 // LCD 制御関数のプロトタイプ宣言
 void lcd_demo_animation();
@@ -17,7 +25,8 @@ void lcd_update(unsigned char data[DISPLAY_ROW][DISPLAY_COL]);
 void lcd_char(unsigned char data);
 void lcd_str(unsigned char *str);
 void lcd_digit3(unsigned int val);
-void lcd_customchar(unsigned int addr, unsigned int *bitmap);
+void lcd_customchar1(unsigned int addr, unsigned int *bitmap);
+void lcd_customchar2(unsigned int addr, unsigned int *bitmap);
 void lcd_clear();
 
 // LCD アニメーション関数
@@ -126,20 +135,33 @@ void lcd_digit3(unsigned int val)
   lcd_data(digit1);
 }
 
-void lcd_customchar(unsigned int addr, unsigned int *bitmap)
+/* Display System : dot illust */
+void lcd_customchar1(unsigned int addr, unsigned int *bitmap)
 {
-  lcd_cmd((addr << 3) | 0x40); /* Set CGRAM address */
-  lcd_data(bitmap[0]);
-  lcd_data(bitmap[1]);
-  lcd_data(bitmap[2]);
-  lcd_data(bitmap[3]);
-  lcd_data(bitmap[4]);
-  lcd_data(bitmap[5]);
-  lcd_data(bitmap[6]);
-  lcd_data(0x00); /* Last line is used by cursor */
-  lcd_cmd(0x80);  /* Set DDRAM address (write to display) */
+    lcd_cmd((addr << 3) | 0x40); /* Set CGRAM address */
+    lcd_data(bitmap[0]);
+    lcd_data(bitmap[1]);
+    lcd_data(bitmap[2]);
+    lcd_data(bitmap[3]);
+    lcd_data(bitmap[4]);
+    lcd_data(bitmap[5]);
+    lcd_data(bitmap[6]);
+    lcd_data(0x00);              /* Last line is used by cursor */
+    lcd_cmd(0xc0 + 1 );               /* Set DDRAM address (write to display) */
+}
 
-  lcd_data(addr);
+void lcd_customchar2(unsigned int addr, unsigned int *bitmap)
+{
+    lcd_cmd((addr << 3) | 0x40); 
+    lcd_data(bitmap[0]);
+    lcd_data(bitmap[1]);
+    lcd_data(bitmap[2]);
+    lcd_data(bitmap[3]);
+    lcd_data(bitmap[4]);
+    lcd_data(bitmap[5]);
+    lcd_data(bitmap[6]);
+    lcd_data(0x00);              
+    lcd_cmd(0xc0 + 18);               
 }
 
 void lcd_clear()
