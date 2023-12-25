@@ -25,6 +25,7 @@ int play_stop_flag =
     0; // deadline missを検知したら1にする。btmを押してゲーム再開
 int renda_A_flag = 100;
 int renda_B_flag = 100;
+int serve_flag = 1;
 
 void game_init()
 {
@@ -36,21 +37,26 @@ void game_init()
   move_direction = 1;
   renda_A_flag = 100;
   renda_B_flag = 100;
+  serve_flag = 1;
 }
 
 void game_opening()
 {
   lcd_clear();
 
-  lcd_cmd(0x80);
+  lcd_cmd(0xc0 + 2);
   lcd_str("Press any button");
+  lcd_cmd(0x94 + 5);
+  lcd_str("Game start!");
 
   btn_wait_any(); // buttonが何かしら押されるまで待つ
 
-  lcd_clear();       // 画面をクリアする
+  lcd_clear(); // 画面をクリアする
+  /*
   lcd_cmd(0xc0 + 5); // 左に5マス余白を作る
   lcd_str("Game start!");
   btn_wait_any();
+  */
   // handler_sleep(10); あんまり意味なかった
 }
 
@@ -89,6 +95,8 @@ void game_ending(int winner)
     }
     else if (btn_states[1])
     {
+      game_init();
+      game_opening();
       game_state = -1;
       break;
     }
@@ -145,53 +153,99 @@ void game_play()
     just_flag = 0;
     btn_wait_any();
     play_stop_flag = 0;
+    serve_flag = 1;
   }
 }
 
 void game_judge()
 {
+  int i;
   if (btn_get_state(4)) // ボタンAが押されたとき
   {
     if ((virturl_index > 170 && virturl_index <= 180 && renda_B_flag >= 100))
     {
+      for (i = 0; i < 10; i++)
+      {
+        tone_play(2);
+      }
       just_flag = 0;
       move_direction = -1;
     }
-    else if ((virturl_index > 180 && virturl_index <= 190 && renda_B_flag >= 100))
+    else if ((virturl_index > 180 && virturl_index <= 190 && renda_B_flag >= 100 && serve_flag == 0))
     {
+      for (i = 0; i < 5; i++)
+      {
+        tone_play(1);
+      }
       just_flag = 1;
+      move_direction = -1;
+    }
+    else if ((virturl_index > 180 && virturl_index <= 190 && renda_B_flag >= 100 && serve_flag == 1))
+    {
+      for (i = 0; i < 10; i++)
+      {
+        tone_play(2);
+      }
+      just_flag = 0;
       move_direction = -1;
     }
     else if ((virturl_index > 190 && virturl_index <= 200 && renda_B_flag >= 100))
     {
+      for (i = 0; i < 10; i++)
+      {
+        tone_play(2);
+      }
       just_flag = 0;
       move_direction = -1;
     }
     renda_B_flag = 0;
+    serve_flag = 0;
   }
   else if (btn_get_state(5)) // ボタンCが押されたとき
   {
     if ((virturl_index >= 20 && virturl_index < 30 && renda_A_flag >= 100))
     {
+      for (i = 0; i < 10; i++)
+      {
+        tone_play(2);
+      }
       just_flag = 0;
       move_direction = 1;
     }
-    else if ((virturl_index >= 10 && virturl_index < 20 && renda_A_flag >= 100))
+    else if ((virturl_index >= 10 && virturl_index < 20 && renda_A_flag >= 100 && serve_flag == 0))
     {
+      for (i = 0; i < 10; i++)
+      {
+        tone_play(3);
+      }
       just_flag = 1;
+      move_direction = 1;
+    }
+    else if ((virturl_index >= 10 && virturl_index < 20 && renda_A_flag >= 100 && serve_flag == 1))
+    {
+      for (i = 0; i < 10; i++)
+      {
+        tone_play(2);
+      }
+      just_flag = 0;
       move_direction = 1;
     }
     else if ((virturl_index >= 0 && virturl_index < 10 && renda_A_flag >= 100))
     {
+      for (i = 0; i < 10; i++)
+      {
+        tone_play(2);
+      }
       just_flag = 0;
       move_direction = 1;
     }
     renda_A_flag = 0;
+    serve_flag = 0;
   }
 
   if (!play_stop_flag)
   {
-    if (just_flag == 0) // 通常モード
+    if (just_flag == 0 || serve_flag == 1) // 通常モードかサーブ
       virturl_index = virturl_index + move_direction;
     else
       // 倍速モード
