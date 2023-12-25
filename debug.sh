@@ -1,3 +1,6 @@
+#!/bin/bash
+set -euo pipefail
+
 touch ./mips/soft/test.c
 cat ./debug.c > ./mips/soft/test.c
 cd ./mips/soft
