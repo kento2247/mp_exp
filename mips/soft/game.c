@@ -32,7 +32,7 @@ void game_init()
   for (i = 0; i < 2; i++)
     life[i] = 5;
   game_state = 0;
-  virturl_index = 0;
+  virturl_index = 10;
   move_direction = 1;
   renda_A_flag = 100;
   renda_B_flag = 100;
@@ -60,7 +60,7 @@ void game_ending(int winner)
   lcd_cmd(0x80);
 
   unsigned char data[DISPLAY_ROW][DISPLAY_COL] = {
-      "game end.", "winner player is", "", "press button to end"};
+      "game end.", "winner player is", "button0 to end", "button1 to restart"};
   /*
   if (winner == 0)
     data[DISPLAY_ROW - 2][5] = 'A';
@@ -89,7 +89,7 @@ void game_ending(int winner)
     }
     else if (btn_states[1])
     {
-      game_state = 0;
+      game_state = -1;
       break;
     }
   }
@@ -112,6 +112,21 @@ void game_show_ball(int ball_index)
   lcd_str("HP");
   lcd_cmd(0xd4 + 19);
   lcd_data(intToChar(life[1]));
+
+  unsigned int bitmap[7] = {
+      0x0E, /* 01110 */
+      0x0A, /* 01010 */
+      0x0A, /* 01010 */
+      0x0E, /* 01110 */
+      0x04, /* 00100 */
+      0x04, /* 00100 */
+      0x04, /* 00100 */
+  };
+
+  lcd_customchar1(0x03, bitmap);
+  lcd_data(0x03);
+  lcd_customchar2(0x07, bitmap);
+  lcd_data(0x07);
 }
 
 void game_play()
@@ -186,14 +201,14 @@ void game_judge()
   if (virturl_index > 200)
   {
     move_direction = -1; // ボールの移動方向を左へ
-    virturl_index = 199;
+    virturl_index = 189;
     life[1]--; // Cはdeadline miss
     play_stop_flag = 1;
   }
   else if (virturl_index < 0)
   {
     move_direction = 1; // ボールの移動方向を右へ
-    virturl_index = 0;
+    virturl_index = 11;
     life[0]--; // Aはdeadline miss
     play_stop_flag = 1;
   }
