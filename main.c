@@ -1,3 +1,7 @@
+// タイトル：リズムテニスゲーム
+// アピールポイント
+// 乱数は使っていない
+// 5班
 // デバイスの初期化を行う。必ずcrt0.cを最初にincludeする
 #include "crt0.c"
 
@@ -25,8 +29,6 @@ void interrupt_handler()
 
   switch (game_state)
   {
-  case -1:
-    game_state = 0;
   case 0:
     game_init();
     // tone_demo();
@@ -41,8 +43,6 @@ void interrupt_handler()
     break;
   case 2:
     game_ending((life[0] == 0) ? 1 : 0);
-    // btn_wait_any();
-    // game_state = 3;
     break;
   default:
     lcd_clear();
