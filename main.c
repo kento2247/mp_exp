@@ -29,9 +29,6 @@ void interrupt_handler()
 
   switch (game_state)
   {
-  case -1:
-    game_state = 0;
-    break;
   case 0:
     game_init();
     int i;
