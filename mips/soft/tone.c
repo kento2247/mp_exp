@@ -14,13 +14,13 @@ void tone_play(int id)
   switch (id)
   {
   case 1:
-    len = 300000;
+    len = 13304;
     break;
   case 2:
-    len = 50000;
+    len = 11851;
     break;
   case 3:
-    len = 10000;
+    len = 10554;
     break;
   case 4:
     len = 9949;

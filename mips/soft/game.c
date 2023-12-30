@@ -4,6 +4,7 @@
 #include "button.c"
 #include "handler_func.c"
 #include "lcd.c"
+#include "tone.c"
 
 // 関数のプロトタイプ宣言
 void game_opening();
@@ -23,9 +24,10 @@ int move_direction = 1; // ボールの移動方向。1: 増加, -1: 減少
 int just_flag = 0;      // 0: 通常, 1: just。球速を変化させる条件に使用
 int play_stop_flag =
     0; // deadline missを検知したら1にする。btmを押してゲーム再開
-int renda_A_flag = 100;
-int renda_B_flag = 100;
+int renda_A_flag = 20;
+int renda_B_flag = 20;
 int serve_flag = 1;
+int critical_flag = 2;
 
 void game_init()
 {
@@ -35,9 +37,10 @@ void game_init()
   game_state = 0;
   virturl_index = 10;
   move_direction = 1;
-  renda_A_flag = 100;
-  renda_B_flag = 100;
+  renda_A_flag = 20;
+  renda_B_flag = 20;
   serve_flag = 1;
+  critical_flag = 2;
 }
 
 void game_opening()
@@ -148,8 +151,8 @@ void game_play()
   }
   else
   {
-    renda_A_flag = 100;
-    renda_B_flag = 100;
+    renda_A_flag = 20;
+    renda_B_flag = 20;
     just_flag = 0;
     btn_wait_any();
     play_stop_flag = 0;
@@ -162,38 +165,39 @@ void game_judge()
   int i;
   if (btn_get_state(4)) // ボタンAが押されたとき
   {
-    if ((virturl_index > 170 && virturl_index <= 180 && renda_B_flag >= 100))
+    if ((virturl_index > 170 && virturl_index <= 180 && renda_B_flag >= 20))
     {
       for (i = 0; i < 10; i++)
       {
-        tone_play(2);
+        tone_play(4);
       }
       just_flag = 0;
       move_direction = -1;
     }
-    else if ((virturl_index > 180 && virturl_index <= 190 && renda_B_flag >= 100 && serve_flag == 0))
+    else if ((virturl_index > 180 && virturl_index <= 190 && renda_B_flag >= 20 && serve_flag == 0))
     {
-      for (i = 0; i < 5; i++)
+      for (i = 0; i < 10; i++)
       {
         tone_play(1);
       }
       just_flag = 1;
       move_direction = -1;
+      critical_flag++;
     }
-    else if ((virturl_index > 180 && virturl_index <= 190 && renda_B_flag >= 100 && serve_flag == 1))
+    else if ((virturl_index > 180 && virturl_index <= 190 && renda_B_flag >= 20 && serve_flag == 1))
     {
       for (i = 0; i < 10; i++)
       {
-        tone_play(2);
+        tone_play(4);
       }
       just_flag = 0;
       move_direction = -1;
     }
-    else if ((virturl_index > 190 && virturl_index <= 200 && renda_B_flag >= 100))
+    else if ((virturl_index > 190 && virturl_index <= 200 && renda_B_flag >= 20))
     {
       for (i = 0; i < 10; i++)
       {
-        tone_play(2);
+        tone_play(4);
       }
       just_flag = 0;
       move_direction = -1;
@@ -203,38 +207,39 @@ void game_judge()
   }
   else if (btn_get_state(5)) // ボタンCが押されたとき
   {
-    if ((virturl_index >= 20 && virturl_index < 30 && renda_A_flag >= 100))
+    if ((virturl_index >= 20 && virturl_index < 30 && renda_A_flag >= 20))
     {
       for (i = 0; i < 10; i++)
       {
-        tone_play(2);
+        tone_play(4);
       }
       just_flag = 0;
       move_direction = 1;
     }
-    else if ((virturl_index >= 10 && virturl_index < 20 && renda_A_flag >= 100 && serve_flag == 0))
+    else if ((virturl_index >= 10 && virturl_index < 20 && renda_A_flag >= 20 && serve_flag == 0))
     {
       for (i = 0; i < 10; i++)
       {
-        tone_play(3);
+        tone_play(8);
       }
       just_flag = 1;
       move_direction = 1;
+      critical_flag++;
     }
-    else if ((virturl_index >= 10 && virturl_index < 20 && renda_A_flag >= 100 && serve_flag == 1))
+    else if ((virturl_index >= 10 && virturl_index < 20 && renda_A_flag >= 20 && serve_flag == 1))
     {
       for (i = 0; i < 10; i++)
       {
-        tone_play(2);
+        tone_play(4);
       }
       just_flag = 0;
       move_direction = 1;
     }
-    else if ((virturl_index >= 0 && virturl_index < 10 && renda_A_flag >= 100))
+    else if ((virturl_index >= 0 && virturl_index < 10 && renda_A_flag >= 20))
     {
       for (i = 0; i < 10; i++)
       {
-        tone_play(2);
+        tone_play(4);
       }
       just_flag = 0;
       move_direction = 1;
@@ -246,10 +251,15 @@ void game_judge()
   if (!play_stop_flag)
   {
     if (just_flag == 0 || serve_flag == 1) // 通常モードかサーブ
-      virturl_index = virturl_index + move_direction;
+    {
+      critical_flag = 2;
+      virturl_index = virturl_index + move_direction * critical_flag;
+    }
     else
+    {
       // 倍速モード
-      virturl_index = virturl_index + move_direction * 2;
+      virturl_index = virturl_index + move_direction * critical_flag;
+    }
   }
 
   if (virturl_index > 200)
