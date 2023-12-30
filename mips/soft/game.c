@@ -52,12 +52,6 @@ void game_opening()
   btn_wait_any(); // buttonが何かしら押されるまで待つ
 
   lcd_clear(); // 画面をクリアする
-  /*
-  lcd_cmd(0xc0 + 5); // 左に5マス余白を作る
-  lcd_str("Game start!");
-  btn_wait_any();
-  */
-  // handler_sleep(10); あんまり意味なかった
 }
 
 void game_ending(int winner)
@@ -95,9 +89,7 @@ void game_ending(int winner)
     }
     else if (btn_states[1])
     {
-      game_init();
-      game_opening();
-      game_state = -1;
+      game_state = 0;
       break;
     }
   }
@@ -146,12 +138,21 @@ void game_play()
     renda_B_flag = renda_B_flag + 1;
     game_judge();
   }
-  else
+  else if (play_stop_flag == 1)
   {
     renda_A_flag = 100;
     renda_B_flag = 100;
     just_flag = 0;
-    btn_wait_any();
+    btn_wait_A();
+    play_stop_flag = 0;
+    serve_flag = 1;
+  }
+  else if (play_stop_flag == 2)
+  {
+    renda_A_flag = 100;
+    renda_B_flag = 100;
+    just_flag = 0;
+    btn_wait_C();
     play_stop_flag = 0;
     serve_flag = 1;
   }
@@ -264,7 +265,7 @@ void game_judge()
     move_direction = 1; // ボールの移動方向を右へ
     virturl_index = 11;
     life[0]--; // Aはdeadline miss
-    play_stop_flag = 1;
+    play_stop_flag = 2;
   }
   game_show_ball(virturl_index / 10);
 }
